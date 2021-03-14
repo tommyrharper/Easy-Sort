@@ -20,8 +20,7 @@ const generateArray = (length: number): number[] => {
 };
 
 const bubbleSort = (array: number[]): number[] => {
-  // const arr = [...array];
-  const arr = array;
+  const arr = [...array];
   let changeMade = true;
   while (changeMade) {
     changeMade = false;
@@ -41,6 +40,10 @@ const bubbleSort = (array: number[]): number[] => {
 const BarChart: React.FC = () => {
   const [array, setArray] = useState<number[]>(() => generateArray(ARR_LENGTH));
 
+  const test = () => {
+    setArray(a => bubbleSort(a));
+  }
+  
   return (
     <div>
       <div className="barsContainer">
@@ -57,7 +60,8 @@ const BarChart: React.FC = () => {
           </Box>
         ))}
       </div>
-      <Button marginTop="40px" onClick={() => setArray(a => bubbleSort(a))}>
+      {/* <Button marginTop="40px" onClick={() => setArray(a => bubbleSort(a))}> */}
+      <Button marginTop="40px" onClick={test}>
         Sort
       </Button>
     </div>
