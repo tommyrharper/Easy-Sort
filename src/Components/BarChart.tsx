@@ -11,8 +11,9 @@ const generateArray = (length: number): number[] => {
     arr = [];
     for (let i = 0; i < length; i++) {
       arr.push(Math.floor(Math.random() * length) + 1);
-      if (!i) continue;
-      if (arr[i] < arr[i - 1]) sorted = false;
+    }
+    for (let i = 0; i < length - 1; i++) {
+      if (arr[i] > arr[i + 1]) sorted = false;
     }
   }
   return arr;
