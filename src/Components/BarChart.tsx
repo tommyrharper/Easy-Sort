@@ -15,13 +15,7 @@ const BarChart: React.FC = () => {
   const [array, setArray] = useState<number[]>(() => generateArray(ARR_LENGTH));
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "flex-end",
-      }}
-    >
+    <div className="barsContainer">
       {console.log(`array`, array)}
       {array.map((x, i) => {
         console.log(`x`, x);
@@ -31,15 +25,12 @@ const BarChart: React.FC = () => {
           <div
             key={`${x}${i}`}
             className="bar"
-            style={{
-              height: `${height}px`,
-            }}
+            style={{ height: `${height}px` }}
           >
             {x}
           </div>
         );
       })}
-      {/* here */}
     </div>
   );
 };
