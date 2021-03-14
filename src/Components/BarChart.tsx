@@ -37,12 +37,13 @@ const bubbleSort = (array: number[]): number[] => {
   return arr;
 };
 
+const test = (setArray: any) => {
+  setArray((a: number[]) => bubbleSort(a));
+}
+
 const BarChart: React.FC = () => {
   const [array, setArray] = useState<number[]>(() => generateArray(ARR_LENGTH));
 
-  const test = () => {
-    setArray(a => bubbleSort(a));
-  }
   
   return (
     <div>
@@ -61,7 +62,7 @@ const BarChart: React.FC = () => {
         ))}
       </div>
       {/* <Button marginTop="40px" onClick={() => setArray(a => bubbleSort(a))}> */}
-      <Button marginTop="40px" onClick={test}>
+      <Button marginTop="40px" onClick={() => test(setArray)}>
         Sort
       </Button>
     </div>
