@@ -9,12 +9,10 @@ import BarChart from './Components/BarChart';
 
 export const App: React.FC = () => {
   return (
-    <div className="App">
-      <Box textAlign="center" fontSize="xl">
-        <Heading padding="20px">Easy-Sort</Heading>
-        <BarChart/>
-      </Box>
-    </div>
+    <Box className="appContainer" fontSize="xl">
+      <Heading className="heading" size="3xl" color="teal.300">Easy-Sort</Heading>
+      <BarChart/>
+    </Box>
   );
 }
 

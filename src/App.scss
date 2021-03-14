@@ -1,3 +1,21 @@
-.App {
-  text-align: center;
+html, body {
+  height: 100%;
 }
+
+#root {
+  height: 100%;
+}
+
+.heading {
+  padding: 50px;
+}
+
+.appContainer {
+  height: 70%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+

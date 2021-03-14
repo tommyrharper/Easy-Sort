@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./BarChart.scss";
+import { Box } from "@chakra-ui/react";
 
 const ARR_LENGTH = 5;
 
@@ -22,13 +23,14 @@ const BarChart: React.FC = () => {
         const height = x * 50;
         console.log(`height`, height);
         return (
-          <div
-            key={`${x}${i}`}
+          <Box
             className="bar"
-            style={{ height: `${height}px` }}
+            height={`${height}px`}
+            borderRadius="lg"
+            backgroundColor="teal.300"
           >
             {x}
-          </div>
+          </Box>
         );
       })}
     </div>
