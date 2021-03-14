@@ -4,7 +4,7 @@ The aim of this program is to help developers learn sorting algorithms, through 
 
 ## User Stories
 
-- [ ] As a user I should be able to open up the webpage.
+- [x] As a user I should be able to open up the webpage.
 - [ ] As a user I be able to see a visualisation of an array.
 - [ ] As a user I be able to see shuffle the order of the array.
 - [ ] As a user I be able to click a button to sort the array.
