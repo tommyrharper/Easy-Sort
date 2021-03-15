@@ -1,12 +1,22 @@
 import React, { useState } from "react";
 import "./BarChart.scss";
 import { Box, Button } from "@chakra-ui/react";
-import { generateArray } from '../Helpers/Helpers';
+import { generateArray, bubbleSort } from "../Helpers/Helpers";
 
 const ARR_LENGTH = 5;
+const DELAY = 500;
+const HEIGHT_MULTI = 50;
 
-const bubbleSort = (array: number[]): number[] => {
+const calcHeight = (h: number) => h * HEIGHT_MULTI;
+interface Animation {
+  startValues: number[];
+  endValues: number[];
+  positions: number[];
+}
+
+const getBubbleSortAnimations = (array: number[]): Animation[] => {
   const arr = [...array];
+  const animations = [];
   let changeMade = true;
   while (changeMade) {
     changeMade = false;
@@ -18,17 +28,58 @@ const bubbleSort = (array: number[]): number[] => {
         arr[i + 1] = bar1;
         changeMade = true;
       }
+      const animation: Animation = {
+        startValues: [bar1, bar2],
+        endValues: [arr[i], arr[i + 1]],
+        positions: [i, i + 1],
+      };
+      animation.endValues = [arr[i], arr[i + 1]];
+      animations.push(animation);
     }
   }
-  return arr;
+  return animations;
 };
 
-const test = (setArray: any) => {
-  setArray((a: number[]) => bubbleSort(a));
-};
+const newBubbleSort = (array: number[]) => {
+  const animations = getBubbleSortAnimations(array);
+  // const arrayBars = document.getElementsByClassName('bar');
+  const arrayBars = document.getElementsByClassName('bar') as HTMLCollectionOf<HTMLElement>;
+  console.log(`arrayBars`, arrayBars);
+  for (let i = 0; i < animations.length; i++) {
+    const { startValues, endValues, positions } = animations[i];
+    const pos1 = positions[0];
+    const pos2 = positions[1];
+    const height1 = `${calcHeight(endValues[0])}px`;
+    const height2 = `${calcHeight(endValues[1])}px`;
+    setTimeout(() => {
+      console.log(`i`, i);
+      for (let j = 0; j < arrayBars.length; j++) {
+        if (j !== pos1 && j !== pos2) {
+          arrayBars[j].style.backgroundColor = '#4FD1C5';
+        }
+      }
+      arrayBars[pos1].style.backgroundColor = 'red'
+      arrayBars[pos2].style.backgroundColor = 'red'
+      arrayBars[pos1].style.height = height1;
+      arrayBars[pos2].style.height = height2;
+      arrayBars[pos1].innerHTML = `${endValues[0]}`;
+      arrayBars[pos2].innerHTML = `${endValues[1]}`;
+      if (i === animations.length - 1) {
+        console.log('should trigger final clear');
+        setTimeout(() => {
+          console.log('final timeout starts')
+          for (let j = 0; j < arrayBars.length; j++) {
+            arrayBars[j].style.backgroundColor = '#4FD1C5';
+          }
+        }, DELAY)
+      }
+    }, i * DELAY);
+  }
+}
 
 const BarChart: React.FC = () => {
   const [array, setArray] = useState<number[]>(() => generateArray(ARR_LENGTH));
+  // newBubbleSort(array);
   return (
     <div>
       <div className="barsContainer">
@@ -37,7 +88,7 @@ const BarChart: React.FC = () => {
           <Box
             key={`${x}${i}`}
             className="bar"
-            height={`${x * 50}px`}
+            height={`${calcHeight(x)}px`}
             borderRadius="lg"
             backgroundColor="teal.300"
           >
@@ -45,9 +96,12 @@ const BarChart: React.FC = () => {
           </Box>
         ))}
       </div>
-      {/* <Button marginTop="40px" onClick={() => setArray(a => bubbleSort(a))}> */}
-      <Button marginTop="40px" onClick={() => test(setArray)}>
+      {/* <Button margin="40px" onClick={() => setArray(a => bubbleSort(a))}> */}
+      <Button margin="40px" onClick={() => newBubbleSort(array)}>
         Sort
+      </Button>
+      <Button margin="40px" onClick={() => setArray(generateArray(ARR_LENGTH))}>
+        Shuffle
       </Button>
     </div>
   );
