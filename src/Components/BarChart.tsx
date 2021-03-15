@@ -1,23 +1,9 @@
 import React, { useState } from "react";
 import "./BarChart.scss";
 import { Box, Button } from "@chakra-ui/react";
+import { generateArray } from '../Helpers/Helpers';
 
 const ARR_LENGTH = 5;
-
-const generateArray = (length: number): number[] => {
-  let arr = [];
-  let sorted = true;
-  while (sorted) {
-    arr = [];
-    for (let i = 0; i < length; i++) {
-      arr.push(Math.floor(Math.random() * length) + 1);
-    }
-    for (let i = 0; i < length - 1; i++) {
-      if (arr[i] > arr[i + 1]) sorted = false;
-    }
-  }
-  return arr;
-};
 
 const bubbleSort = (array: number[]): number[] => {
   const arr = [...array];
@@ -39,12 +25,10 @@ const bubbleSort = (array: number[]): number[] => {
 
 const test = (setArray: any) => {
   setArray((a: number[]) => bubbleSort(a));
-}
+};
 
 const BarChart: React.FC = () => {
   const [array, setArray] = useState<number[]>(() => generateArray(ARR_LENGTH));
-
-  
   return (
     <div>
       <div className="barsContainer">
