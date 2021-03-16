@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { calcDelay } from "../Helpers/Helpers";
+import { calcDelay, calcArrLength } from "../Helpers/Helpers";
 
 export const useForm = (initialValues: any) => {
   const [values, setValues] = useState(initialValues);
@@ -17,7 +17,7 @@ export const useForm = (initialValues: any) => {
           }
           case 'length': {
             name = 'arrLength';
-            value = e;
+            value = calcArrLength(e);
             if (!value) value = 1;
             break;
           }
