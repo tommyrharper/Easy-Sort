@@ -1,4 +1,4 @@
-export const DEFAULT_ARR_LENGTH = 10;
+export const DEFAULT_ARR_LENGTH = 25;
 export const DEFAULT_DELAY = 50;
 
 export const MAX_DELAY = 2048;
