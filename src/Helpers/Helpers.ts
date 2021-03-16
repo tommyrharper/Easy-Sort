@@ -1,4 +1,5 @@
 export const generateArray = (length: number): number[] => {
+  if (length <= 1) return [1];
   let arr = [];
   let sorted = true;
   while (sorted) {
