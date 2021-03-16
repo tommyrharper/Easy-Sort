@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import "./App.scss";
 import { useForm } from "./Hooks/useForm";
-
 import { Box, Heading, Select } from "@chakra-ui/react";
 import BarChart from "./Components/BarChart";
+import Controls from "./Components/Controls";
+
+const ARR_LENGTH = 10;
+const DELAY = 300;
+const HEIGHT_MULTI = 50
+
 
 export const App: React.FC = () => {
   const [values, handleChange] = useForm({
     algo: "Bubble Sort",
+    delay: DELAY,
+    arrLength: ARR_LENGTH,
   });
 
   return (
@@ -15,14 +22,13 @@ export const App: React.FC = () => {
       <Heading className="heading" size="2xl" color="teal.300">
         Easy-Sort
       </Heading>
-      <Box marginBottom="20px">
-        <Select value={values.algo} onChange={handleChange} name="algo">
-          <option value="Bubble Sort">Bubble Sort</option>
-          <option value="Insertion Sort">Insertion Sort</option>
-          <option value="Selection Sort">Selection Sort</option>
-        </Select>
+      <Box marginBottom="20px" display="flex">
+        <BarChart algo={values.algo}/>
+        <Controls 
+          values={values}
+          handleChange={handleChange}
+        />
       </Box>
-      <BarChart algo={values.algo}/>
     </Box>
   );
 };
