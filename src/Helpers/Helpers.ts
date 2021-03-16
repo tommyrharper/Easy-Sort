@@ -1,4 +1,8 @@
-import { MAX_DELAY, MIN_DELAY } from "./Config";
+import {
+  MAX_SPEED,
+  BASE,
+  logb,
+} from "./Config";
 
 export const generateArray = (length: number): number[] => {
   if (length <= 1) return [1];
@@ -22,13 +26,8 @@ export const sleep = (milliseconds: number): void => {
   while (currentTime + milliseconds >= new Date().getTime()) {}
 };
 
-export const calcSpeed = (delay: number): number => MAX_DELAY - delay;
-
-export const calcDelay = (speed: number): number => {
-  let delay = MAX_DELAY - speed;
-  if (delay <= MIN_DELAY) return MIN_DELAY;
-  return delay;
-};
+export const calcDelay = (s: number) => BASE ** (MAX_SPEED - s);
+export const calcSpeed = (d: number) => MAX_SPEED - logb(d);
 
 export const getBarChartStyling = (arrLength: number) => {
   const margin = 180 / ((arrLength - 1) * 2);

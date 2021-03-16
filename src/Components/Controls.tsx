@@ -12,8 +12,8 @@ import { calcSpeed } from "../Helpers/Helpers";
 import {
   MIN_ARRLENGTH,
   MAX_ARRLENGTH,
-  MIN_DELAY,
-  MAX_DELAY,
+  MAX_SPEED,
+  MIN_SPEED,
 } from "../Helpers/Config";
 
 interface Values {
@@ -28,6 +28,7 @@ interface Props {
 }
 
 const Controls: React.FC<Props> = ({ values, handleChange }) => {
+  const speed = calcSpeed(values.delay);
   return (
     <Box marginLeft="20px">
       <FormLabel>Select Sorting Algorithm:</FormLabel>
@@ -45,9 +46,9 @@ const Controls: React.FC<Props> = ({ values, handleChange }) => {
       </Select>
       <FormLabel>Select Speed:</FormLabel>
       <Slider
-        min={MIN_DELAY}
-        max={MAX_DELAY}
-        defaultValue={calcSpeed(values.delay)}
+        min={MIN_SPEED}
+        max={MAX_SPEED}
+        defaultValue={speed}
         onChange={(e) => handleChange(e, "speed")}
         colorScheme="teal"
         name="speed"
