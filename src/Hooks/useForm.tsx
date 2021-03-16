@@ -5,12 +5,14 @@ export const useForm = (initialValues: any) => {
   const [values, setValues] = useState(initialValues);
   return [
     values,
-    (e: React.ChangeEvent<HTMLSelectElement>) => {
+    (e: React.ChangeEvent<HTMLSelectElement>, opt?: string) => {
       let name: string;
       let value: string | number;
       if (typeof e === "number") {
-        name = "delay";
-        value = calcDelay(parseInt(e));
+        if (opt === "speed") {
+          name = "delay";
+          value = calcDelay(e);
+        } else return;
       } else {
         name = e.target.name;
         value = e.target.value;
