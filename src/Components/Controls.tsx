@@ -23,7 +23,7 @@ interface Props {
 
 const Controls: React.FC<Props> = ({ values, handleChange }) => {
   return (
-    <Box>
+    <Box marginLeft="20px">
       <FormLabel>Select Sorting Algorithm:</FormLabel>
       <Select
         value={values.algo}
@@ -51,6 +51,7 @@ const Controls: React.FC<Props> = ({ values, handleChange }) => {
       </Slider>
       <FormLabel>Select Array Length:</FormLabel>
       <Slider
+        min={5}
         defaultValue={calcLength(values.arrLength)}
         onChange={(e) => handleChange(e, "length")}
         colorScheme="teal"
