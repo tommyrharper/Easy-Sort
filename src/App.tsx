@@ -16,6 +16,7 @@ export const App: React.FC = () => {
   const [array, setArray] = useState<number[]>(() =>
     generateArray(values.arrLength)
   );
+  const [isSorted, setSorted] = useState<boolean>(false);
 
   return (
     <Box className="appContainer" fontSize="xl">
@@ -23,7 +24,7 @@ export const App: React.FC = () => {
         Easy-Sort
       </Heading>
       <Box marginBottom="20px" display="flex">
-        <BarChart values={values} array={array} setArray={setArray} />
+        <BarChart values={values} array={array} setArray={setArray} isSorted={isSorted} setSorted={setSorted}/>
         <Controls values={values} handleChange={handleChange} />
       </Box>
     </Box>

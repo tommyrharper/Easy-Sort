@@ -14,11 +14,11 @@ interface Props {
   values: Values;
   array: number[];
   setArray: React.Dispatch<React.SetStateAction<number[]>>;
+  isSorted: boolean;
+  setSorted: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const BarChart: React.FC<Props> = ({ values, array, setArray }) => {
-  const [isSorted, setSorted] = useState<boolean>(false);
-
+const BarChart: React.FC<Props> = ({ values, array, setArray, isSorted, setSorted }) => {
   if (values.arrLength !== array.length)
     setArray(generateArray(values.arrLength));
 
