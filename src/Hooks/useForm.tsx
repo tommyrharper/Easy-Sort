@@ -9,10 +9,23 @@ export const useForm = (initialValues: any) => {
       let name: string;
       let value: string | number;
       if (typeof e === "number") {
-        if (opt === "speed") {
-          name = "delay";
-          value = calcDelay(e);
-        } else return;
+        switch (opt) {
+          case 'speed': {
+            name = 'delay';
+            value = calcDelay(e);
+            break;
+          }
+          case 'length': {
+            name = 'arrLength';
+            value = e;
+            if (!value) value = 1;
+            break;
+          }
+          default: {
+            return;
+          } 
+          
+        }
       } else {
         name = e.target.name;
         value = e.target.value;
