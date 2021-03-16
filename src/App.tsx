@@ -7,8 +7,7 @@ import Controls from "./Components/Controls";
 
 const ARR_LENGTH = 10;
 const DELAY = 300;
-const HEIGHT_MULTI = 50
-
+const HEIGHT_MULTI = 50;
 
 export const App: React.FC = () => {
   const [values, handleChange] = useForm({
@@ -23,11 +22,8 @@ export const App: React.FC = () => {
         Easy-Sort
       </Heading>
       <Box marginBottom="20px" display="flex">
-        <BarChart algo={values.algo}/>
-        <Controls 
-          values={values}
-          handleChange={handleChange}
-        />
+        <BarChart algo={values.algo} />
+        <Controls values={values} handleChange={handleChange} />
       </Box>
     </Box>
   );
