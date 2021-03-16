@@ -33,6 +33,8 @@ const Controls: React.FC<Props> = ({ values, handleChange }) => {
         <option value="Bubble Sort">Bubble Sort</option>
         <option value="Insertion Sort">Insertion Sort</option>
         <option value="Selection Sort">Selection Sort</option>
+        {/* <option value="Selection Sort">Merge Sort</option>
+        <option value="Selection Sort">Quick Sort</option> */}
       </Select>
       <FormLabel>Select Speed:</FormLabel>
       <Slider
@@ -49,7 +51,7 @@ const Controls: React.FC<Props> = ({ values, handleChange }) => {
       <FormLabel>Select Array Length:</FormLabel>
       <Slider
         defaultValue={calcSpeed(values.delay)}
-        onChange={(e) => handleChange(e, "length")}
+        // onChange={(e) => handleChange(e, "length")}
         colorScheme="teal"
         name="arrayLength"
       >
