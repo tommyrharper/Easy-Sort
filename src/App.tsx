@@ -22,7 +22,7 @@ export const App: React.FC = () => {
         Easy-Sort
       </Heading>
       <Box marginBottom="20px" display="flex">
-        <BarChart algo={values.algo} />
+        <BarChart values={values} />
         <Controls values={values} handleChange={handleChange} />
       </Box>
     </Box>

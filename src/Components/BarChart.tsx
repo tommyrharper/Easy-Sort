@@ -5,14 +5,18 @@ import { generateArray } from "../Helpers/Helpers";
 import { bubbleSort } from '../Algos/bubbleSort';
 
 const ARR_LENGTH = 10;
-const DELAY = 300;
 const HEIGHT_MULTI = 50
 const calcHeight = (h: number) => h * HEIGHT_MULTI;
-interface Props {
+interface Values {
   algo: string;
+  delay: number;
 }
 
-const BarChart: React.FC<Props> = () => {
+interface Props {
+  values: Values;
+}
+
+const BarChart: React.FC<Props> = ({ values }) => {
   const [array, setArray] = useState<number[]>(() => generateArray(ARR_LENGTH));
   const [isSorted, setSorted] = useState<boolean>(false);
   return (
@@ -30,14 +34,13 @@ const BarChart: React.FC<Props> = () => {
           </Box>
         ))}
       </div>
-      {/* <Button margin="40px" onClick={() => setArray(a => bubbleSort(a))}> */}
       <Button
         margin="40px"
         onClick={() => {
-          if (!isSorted) bubbleSort(array, DELAY, calcHeight);
+          if (!isSorted) bubbleSort(array, values.delay, calcHeight);
           else {
             setArray(array.sort((a, b) => a - b));
-            bubbleSort(array, DELAY, calcHeight);
+            bubbleSort(array, values.delay, calcHeight);
           }
           setSorted(true);
         }}
