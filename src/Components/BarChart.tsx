@@ -4,12 +4,13 @@ import { Box, Button } from "@chakra-ui/react";
 import { generateArray } from "../Helpers/Helpers";
 import { bubbleSort } from '../Algos/bubbleSort';
 
-const ARR_LENGTH = 10;
 const HEIGHT_MULTI = 50
 const calcHeight = (h: number) => h * HEIGHT_MULTI;
+
 interface Values {
   algo: string;
   delay: number;
+  arrLength: number;
 }
 
 interface Props {
@@ -17,8 +18,11 @@ interface Props {
 }
 
 const BarChart: React.FC<Props> = ({ values }) => {
-  const [array, setArray] = useState<number[]>(() => generateArray(ARR_LENGTH));
+  const [array, setArray] = useState<number[]>(() => generateArray(values.arrLength));
   const [isSorted, setSorted] = useState<boolean>(false);
+  
+  if (values.arrLength !== array.length) setArray(generateArray(values.arrLength));
+
   return (
     <div>
       <div className="barsContainer">
@@ -50,7 +54,7 @@ const BarChart: React.FC<Props> = ({ values }) => {
       <Button
         margin="40px"
         onClick={() => {
-          setArray(generateArray(ARR_LENGTH));
+          setArray(generateArray(values.arrLength));
           setSorted(false);
         }}
       >
