@@ -10,11 +10,6 @@ import {
 } from "@chakra-ui/react";
 import { calcSpeed } from "../Helpers/Helpers";
 
-interface Person {
-  firstName: string;
-  lastName: string;
-}
-
 interface Values {
   algo: string;
   delay: number;
