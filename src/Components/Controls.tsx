@@ -37,9 +37,21 @@ const Controls: React.FC<Props> = ({ values, handleChange }) => {
       <FormLabel>Select Speed:</FormLabel>
       <Slider
         defaultValue={calcSpeed(values.delay)}
-        onChange={handleChange}
+        onChange={(e) => handleChange(e, "speed")}
         colorScheme="teal"
         name="speed"
+      >
+        <SliderTrack>
+          <SliderFilledTrack />
+        </SliderTrack>
+        <SliderThumb />
+      </Slider>
+      <FormLabel>Select Array Length:</FormLabel>
+      <Slider
+        defaultValue={calcSpeed(values.delay)}
+        onChange={(e) => handleChange(e, "length")}
+        colorScheme="teal"
+        name="arrayLength"
       >
         <SliderTrack>
           <SliderFilledTrack />
