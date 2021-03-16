@@ -33,7 +33,10 @@ export const getBubbleSortAnimations = (array: number[]): Animation[] => {
 export const bubbleSort = (
   array: number[],
   delay: number,
-  calcHeight: (h: number) => number
+  calcHeight: (h: number) => number,
+  setArray: React.Dispatch<React.SetStateAction<number[]>>,
+  handleChange: any,
+  e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
 ) => {
   const animations = getBubbleSortAnimations(array);
   const arrayBars = document.getElementsByClassName(
@@ -65,6 +68,8 @@ export const bubbleSort = (
           for (let j = 0; j < arrayBars.length; j++) {
             arrayBars[j].style.backgroundColor = "#4FD1C5";
           }
+          setArray(array.sort((a, b) => a - b));
+          handleChange(e, false);
         }, delay);
       }
     }, i * delay);
