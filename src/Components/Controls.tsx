@@ -8,11 +8,12 @@ import {
   SliderFilledTrack,
   SliderThumb,
 } from "@chakra-ui/react";
-import { calcSpeed } from "../Helpers/Helpers";
+import { calcSpeed, calcLength } from "../Helpers/Helpers";
 
 interface Values {
   algo: string;
   delay: number;
+  arrLength: number;
 }
 
 interface Props {
@@ -50,7 +51,7 @@ const Controls: React.FC<Props> = ({ values, handleChange }) => {
       </Slider>
       <FormLabel>Select Array Length:</FormLabel>
       <Slider
-        defaultValue={calcSpeed(values.delay)}
+        defaultValue={calcLength(values.arrLength)}
         onChange={(e) => handleChange(e, "length")}
         colorScheme="teal"
         name="arrayLength"
