@@ -4,8 +4,8 @@ import { Box, Button } from "@chakra-ui/react";
 import { generateArray } from "../Helpers/Helpers";
 import { bubbleSort } from '../Algos/bubbleSort';
 
-const HEIGHT_MULTI = 50
-const calcHeight = (h: number) => h * HEIGHT_MULTI;
+// const HEIGHT_MULTI = 50
+// const calcHeight = (h: number) => h * HEIGHT_MULTI;
 
 interface Values {
   algo: string;
@@ -23,16 +23,34 @@ const BarChart: React.FC<Props> = ({ values }) => {
   
   if (values.arrLength !== array.length) setArray(generateArray(values.arrLength));
 
+  const margin = 180 / ((values.arrLength - 1) * 2);
+  const width = 500 / values.arrLength;
+  let fontSize = 20;
+  let fontWeight = 'bold'
+  console.log(`width`, width);
+  if (width < 26) {
+    fontSize = width - 5;
+    fontWeight = 'normal'
+    if (fontSize < 1) fontSize = 0;
+  }
+
+  const HEIGHT_MULTI = 500 / values.arrLength;
+  const calcHeight = (h: number) => h * HEIGHT_MULTI;
+
   return (
     <div>
       <div className="barsContainer">
         {array.map((x, i) => (
           <Box
-            key={`${x}${i}`}
+            key={`a${x}b${i}c${margin}d${width}`}
             className="bar"
             height={`${calcHeight(x)}px`}
+            width={`${width}px`}
+            margin={`${margin}px`}
             borderRadius="lg"
             backgroundColor="teal.300"
+            fontWeight={fontWeight}
+            fontSize={`${fontSize}px`}
           >
             {x}
           </Box>
