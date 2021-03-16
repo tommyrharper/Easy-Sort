@@ -18,7 +18,13 @@ interface Props {
   setSorted: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const BarChart: React.FC<Props> = ({ values, array, setArray, isSorted, setSorted }) => {
+const BarChart: React.FC<Props> = ({
+  values,
+  array,
+  setArray,
+  isSorted,
+  setSorted,
+}) => {
   if (values.arrLength !== array.length)
     setArray(generateArray(values.arrLength));
 

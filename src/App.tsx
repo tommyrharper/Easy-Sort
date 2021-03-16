@@ -24,7 +24,13 @@ export const App: React.FC = () => {
         Easy-Sort
       </Heading>
       <Box marginBottom="20px" display="flex">
-        <BarChart values={values} array={array} setArray={setArray} isSorted={isSorted} setSorted={setSorted}/>
+        <BarChart
+          values={values}
+          array={array}
+          setArray={setArray}
+          isSorted={isSorted}
+          setSorted={setSorted}
+        />
         <Controls values={values} handleChange={handleChange} />
       </Box>
     </Box>
