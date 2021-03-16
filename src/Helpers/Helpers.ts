@@ -19,7 +19,13 @@ export const sleep = (milliseconds: number): void => {
   while (currentTime + milliseconds >= new Date().getTime()) {}
 };
 
-export const calcSpeed = (delay: number): number =>
-  101 - Math.floor(delay / 10);
+const MAX_DELAY = 500;
+const MIN_DELAY = 1;
+const EFFECTIVE_MAX_DELAY = MAX_DELAY + MIN_DELAY;
+const SPEED_FACTOR = Math.ceil((MAX_DELAY - MIN_DELAY) / 100);
 
-export const calcDelay = (speed: number): number => 1010 - 10 * speed;
+export const calcSpeed = (delay: number): number =>
+  Math.floor((EFFECTIVE_MAX_DELAY - delay) / SPEED_FACTOR);
+
+export const calcDelay = (speed: number): number =>
+  EFFECTIVE_MAX_DELAY - SPEED_FACTOR * speed;
