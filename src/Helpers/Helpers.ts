@@ -1,4 +1,4 @@
-import { MAX_DELAY, MIN_DELAY, MAX_ARRLENGTH } from './Config';
+import { MAX_DELAY, MIN_DELAY } from './Config';
 
 export const generateArray = (length: number): number[] => {
   if (length <= 1) return [1];
@@ -30,10 +30,3 @@ export const calcSpeed = (delay: number): number =>
 
 export const calcDelay = (speed: number): number =>
   EFFECTIVE_MAX_DELAY - SPEED_FACTOR * speed;
-
-const ARRLENGTH_DIVISOR = Math.floor(100 / MAX_ARRLENGTH);
-
-export const calcArrLength = (length: number) =>
-  Math.ceil(length / ARRLENGTH_DIVISOR);
-
-export const calcLength = (arrLength: number) => arrLength * ARRLENGTH_DIVISOR;
