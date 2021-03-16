@@ -4,16 +4,13 @@ import { useForm } from "./Hooks/useForm";
 import { Box, Heading } from "@chakra-ui/react";
 import BarChart from "./Components/BarChart";
 import Controls from "./Components/Controls";
-
-const ARR_LENGTH = 10;
-const DELAY = 300;
-const HEIGHT_MULTI = 50;
+import { DEFAULT_ARR_LENGTH, DEFAULT_DELAY } from './Helpers/Config';
 
 export const App: React.FC = () => {
   const [values, handleChange] = useForm({
     algo: "Bubble Sort",
-    delay: DELAY,
-    arrLength: ARR_LENGTH,
+    delay: DEFAULT_DELAY,
+    arrLength: DEFAULT_ARR_LENGTH,
   });
 
   return (
