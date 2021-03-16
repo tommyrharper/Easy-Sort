@@ -18,7 +18,7 @@ export const useForm = (initialValues: any) => {
           case 'length': {
             name = 'arrLength';
             value = calcArrLength(e);
-            if (!value) value = 1;
+            if (value <= 5) value = 5;
             break;
           }
           default: {
