@@ -22,7 +22,7 @@ export const App: React.FC = () => {
           <option value="Selection Sort">Selection Sort</option>
         </Select>
       </Box>
-      <BarChart />
+      <BarChart algo={values.algo}/>
     </Box>
   );
 };
