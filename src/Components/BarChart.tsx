@@ -3,30 +3,33 @@ import "./BarChart.scss";
 import { Box, Button } from "@chakra-ui/react";
 import { generateArray, getBarChartStyling } from "../Helpers/Helpers";
 import { bubbleSort } from "../Algos/bubbleSort";
+import { useForm } from '../Hooks/useForm';
 
 interface Values {
   algo: string;
   delay: number;
   arrLength: number;
+  isSorted: boolean;
 }
 
 interface Props {
   values: Values;
   array: number[];
   setArray: React.Dispatch<React.SetStateAction<number[]>>;
-  isSorted: boolean;
-  setSorted: React.Dispatch<React.SetStateAction<boolean>>;
+  barStyle: any;
+  // isSorted: boolean;
+  // setSorted: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const BarChart: React.FC<Props> = ({
   values,
   array,
   setArray,
-  isSorted,
-  setSorted,
+  barStyle,
+  // isSorted,
+  // setSorted,
 }) => {
-  if (values.arrLength !== array.length)
-    setArray(generateArray(values.arrLength));
+  const { arrLength, isSorted } = values;
 
   const {
     margin,
@@ -34,7 +37,7 @@ const BarChart: React.FC<Props> = ({
     fontSize,
     fontWeight,
     calcHeight,
-  } = getBarChartStyling(values.arrLength);
+  } = barStyle;
 
   return (
     <div>
@@ -64,23 +67,32 @@ const BarChart: React.FC<Props> = ({
         })}
       </div>
       <Button
+        name="isSorted"
+        isDisabled={isSorted}
         margin="40px"
-        onClick={() => {
-          if (!isSorted) bubbleSort(array, values.delay, calcHeight);
-          else {
-            setArray(array.sort((a, b) => a - b));
-            bubbleSort(array, values.delay, calcHeight);
-          }
-          setSorted(true);
-        }}
+        // onClick={(e) => {
+        //   console.log(`e`, e);
+        //   (() => useForm(e))()
+        //   // setArray(array.sort((a, b) => a - b));
+        //   // bubbleSort(array, values.delay, calcHeight);
+        //   // setSorted(true);
+
+        //   // if (isSorted) return;
+        //   // if (!isSorted) bubbleSort(array, values.delay, calcHeight);
+        //   // else {
+        //   //   setArray(array.sort((a, b) => a - b));
+        //   //   bubbleSort(array, values.delay, calcHeight);
+        //   // }
+        //   // setSorted(true);
+        // }}
       >
         Sort
       </Button>
       <Button
         margin="40px"
         onClick={() => {
-          setArray(generateArray(values.arrLength));
-          setSorted(false);
+          // setArray(generateArray(arrLength));
+          // setSorted(false);
         }}
       >
         Shuffle
