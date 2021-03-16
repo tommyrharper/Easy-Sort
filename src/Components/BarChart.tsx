@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import "./BarChart.scss";
 import { Box, Button } from "@chakra-ui/react";
-import { generateArray, getBarChartStyling } from "../Helpers/Helpers";
+import { generateArray } from "../Helpers/Helpers";
 import { bubbleSort } from "../Algos/bubbleSort";
-import { useForm } from '../Hooks/useForm';
 
 interface Values {
   algo: string;
   delay: number;
   arrLength: number;
   isSorted: boolean;
+  isSorting: boolean;
 }
 
 interface Props {
@@ -17,8 +17,7 @@ interface Props {
   array: number[];
   setArray: React.Dispatch<React.SetStateAction<number[]>>;
   barStyle: any;
-  // isSorted: boolean;
-  // setSorted: React.Dispatch<React.SetStateAction<boolean>>;
+  handleChange: any;
 }
 
 const BarChart: React.FC<Props> = ({
@@ -26,19 +25,12 @@ const BarChart: React.FC<Props> = ({
   array,
   setArray,
   barStyle,
-  // isSorted,
-  // setSorted,
+  handleChange,
 }) => {
-  const { arrLength, isSorted } = values;
+  const { arrLength, isSorting } = values;
 
-  const {
-    margin,
-    width,
-    fontSize,
-    fontWeight,
-    calcHeight,
-  } = barStyle;
-
+  const { margin, width, fontSize, fontWeight, calcHeight } = barStyle;
+  console.log(`isSorting`, isSorting);
   return (
     <div>
       <div className="barsContainer">
@@ -67,32 +59,21 @@ const BarChart: React.FC<Props> = ({
         })}
       </div>
       <Button
-        name="isSorted"
-        isDisabled={isSorted}
+        name="isSorting"
+        isDisabled={isSorting}
         margin="40px"
-        // onClick={(e) => {
-        //   console.log(`e`, e);
-        //   (() => useForm(e))()
-        //   // setArray(array.sort((a, b) => a - b));
-        //   // bubbleSort(array, values.delay, calcHeight);
-        //   // setSorted(true);
-
-        //   // if (isSorted) return;
-        //   // if (!isSorted) bubbleSort(array, values.delay, calcHeight);
-        //   // else {
-        //   //   setArray(array.sort((a, b) => a - b));
-        //   //   bubbleSort(array, values.delay, calcHeight);
-        //   // }
-        //   // setSorted(true);
-        // }}
+        onClick={(e) => {
+          handleChange(e, true);
+          bubbleSort(array, values.delay, calcHeight, setArray, handleChange, e);
+        }}
       >
         Sort
       </Button>
       <Button
+        isDisabled={isSorting}
         margin="40px"
         onClick={() => {
-          // setArray(generateArray(arrLength));
-          // setSorted(false);
+          setArray(generateArray(arrLength));
         }}
       >
         Shuffle
