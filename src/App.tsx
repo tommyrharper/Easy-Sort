@@ -12,7 +12,7 @@ export const App: React.FC = () => {
     algo: "Bubble Sort",
     delay: DEFAULT_DELAY,
     arrLength: DEFAULT_ARR_LENGTH,
-    isSorted: false,
+    isSorting: false,
   });
   const [array, setArray] = useState<number[]>(() =>
     generateArray(values.arrLength)
@@ -23,10 +23,10 @@ export const App: React.FC = () => {
   const [barStyle, setBarStyle] = useState<any>(() => getBarChartStyling(arrLength));
 
   useEffect(() => {
-    console.log('inside useEffect');
     setArray(generateArray(arrLength));
     setBarStyle(getBarChartStyling(arrLength));
-  }, [arrLength])
+  }, [arrLength]);
+
 
   return (
     <Box className="appContainer" fontSize="xl">
@@ -39,8 +39,7 @@ export const App: React.FC = () => {
           array={array}
           setArray={setArray}
           barStyle={barStyle}
-          // isSorted={isSorted}
-          // setSorted={setSorted}
+          handleChange={handleChange}
         />
         <Controls values={values} handleChange={handleChange} />
       </Box>
