@@ -18,3 +18,8 @@ export const sleep = (milliseconds: number): void => {
 
   while (currentTime + milliseconds >= new Date().getTime()) {}
 };
+
+export const calcSpeed = (delay: number): number =>
+  101 - Math.floor(delay / 10);
+
+export const calcDelay = (speed: number): number => 1010 - 10 * speed;
