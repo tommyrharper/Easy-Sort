@@ -4,9 +4,6 @@ import { Box, Button } from "@chakra-ui/react";
 import { generateArray, getBarChartStyling } from "../Helpers/Helpers";
 import { bubbleSort } from "../Algos/bubbleSort";
 
-// const HEIGHT_MULTI = 50
-// const calcHeight = (h: number) => h * HEIGHT_MULTI;
-
 interface Values {
   algo: string;
   delay: number;
