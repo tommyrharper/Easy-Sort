@@ -33,9 +33,9 @@ export const useForm = (initialValues: any) => {
   const [values, setValues] = useState(initialValues);
   return [
     values,
-    (e: React.ChangeEvent<HTMLSelectElement>, opt?: string) => {
+    (e: React.ChangeEvent<HTMLSelectElement>, opt?: any) => {
       let name: string;
-      let value: string | number;
+      let value: string | number | boolean;
       if (typeof e === "number") {
         const nameValueObj = handleNumber(e, opt);
         name = nameValueObj.name;
@@ -43,6 +43,9 @@ export const useForm = (initialValues: any) => {
       } else {
         name = e.target.name;
         value = e.target.value;
+      }
+      if (name === 'isSorting') {
+        value = opt;
       }
       setValues({
         ...values,
