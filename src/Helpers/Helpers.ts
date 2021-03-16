@@ -1,4 +1,4 @@
-import { MAX_DELAY, MIN_DELAY } from './Config';
+import { MAX_DELAY, MIN_DELAY } from "./Config";
 
 export const generateArray = (length: number): number[] => {
   if (length <= 1) return [1];
@@ -22,11 +22,10 @@ export const sleep = (milliseconds: number): void => {
   while (currentTime + milliseconds >= new Date().getTime()) {}
 };
 
-const EFFECTIVE_MAX_DELAY = MAX_DELAY + MIN_DELAY;
-const SPEED_FACTOR = Math.ceil((MAX_DELAY - MIN_DELAY) / 100);
+export const calcSpeed = (delay: number): number => MAX_DELAY - delay;
 
-export const calcSpeed = (delay: number): number =>
-  Math.floor((EFFECTIVE_MAX_DELAY - delay) / SPEED_FACTOR);
-
-export const calcDelay = (speed: number): number =>
-  EFFECTIVE_MAX_DELAY - SPEED_FACTOR * speed;
+export const calcDelay = (speed: number): number => {
+  let delay = MAX_DELAY - speed;
+  if (delay <= MIN_DELAY) return MIN_DELAY;
+  return delay;
+};

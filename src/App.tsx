@@ -4,7 +4,7 @@ import { useForm } from "./Hooks/useForm";
 import { Box, Heading } from "@chakra-ui/react";
 import BarChart from "./Components/BarChart";
 import Controls from "./Components/Controls";
-import { DEFAULT_ARR_LENGTH, DEFAULT_DELAY } from './Helpers/Config';
+import { DEFAULT_ARR_LENGTH, DEFAULT_DELAY } from "./Helpers/Config";
 
 export const App: React.FC = () => {
   const [values, handleChange] = useForm({
