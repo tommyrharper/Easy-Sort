@@ -7,6 +7,7 @@ import {
   SliderTrack,
   SliderFilledTrack,
   SliderThumb,
+  Button,
 } from "@chakra-ui/react";
 import { calcSpeed } from "../Helpers/Helpers";
 import {
@@ -15,6 +16,7 @@ import {
   MAX_SPEED,
   MIN_SPEED,
 } from "../Helpers/Config";
+import "./Controls.scss";
 
 interface Values {
   algo: string;
@@ -72,6 +74,11 @@ const Controls: React.FC<Props> = ({ values, handleChange }) => {
         </SliderTrack>
         <SliderThumb />
       </Slider>
+      <Button marginTop="20px" className="controlButtons">Sort</Button>
+      <br />
+      <Button className="controlButtons">Shuffle</Button>
+      <br />
+      <Button className="controlButtons">Stop</Button>
     </Box>
   );
 };
