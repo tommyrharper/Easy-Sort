@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./BarChart.scss";
-import { Box, Button } from "@chakra-ui/react";
+import { Box, Button, useToken } from "@chakra-ui/react";
 import { generateArray } from "../Helpers/Helpers";
 import { bubbleSort } from "../Algos/bubbleSort";
 
@@ -28,9 +28,9 @@ const BarChart: React.FC<Props> = ({
   handleChange,
 }) => {
   const { arrLength, isSorting } = values;
-
   const { margin, width, fontSize, fontWeight, calcHeight } = barStyle;
-  console.log(`isSorting`, isSorting);
+  const teal = useToken('colors', 'teal.300');
+
   return (
     <div>
       <div className="barsContainer">
@@ -49,7 +49,7 @@ const BarChart: React.FC<Props> = ({
               width={`${width}px`}
               margin={`${margin}px`}
               borderRadius="lg"
-              backgroundColor="teal.300"
+              backgroundColor={teal}
               fontWeight={fontWeight}
               fontSize={`${fontSize}px`}
             >
@@ -64,7 +64,7 @@ const BarChart: React.FC<Props> = ({
         margin="40px"
         onClick={(e) => {
           handleChange(e, true);
-          bubbleSort(array, values.delay, calcHeight, setArray, handleChange, e);
+          bubbleSort(array, values.delay, calcHeight, setArray, handleChange, e, teal);
         }}
       >
         Sort

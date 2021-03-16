@@ -37,6 +37,7 @@ export const bubbleSort = (
   setArray: React.Dispatch<React.SetStateAction<number[]>>,
   handleChange: any,
   e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  teal: string,
 ) => {
   const animations = getBubbleSortAnimations(array);
   const arrayBars = document.getElementsByClassName(
@@ -51,7 +52,7 @@ export const bubbleSort = (
     setTimeout(() => {
       for (let j = 0; j < arrayBars.length; j++) {
         if (j !== pos1 && j !== pos2) {
-          arrayBars[j].style.backgroundColor = "#4FD1C5";
+          arrayBars[j].style.backgroundColor = teal;
         }
       }
       arrayBars[pos1].style.backgroundColor = "red";
@@ -66,7 +67,7 @@ export const bubbleSort = (
         // clear all bars
         setTimeout(() => {
           for (let j = 0; j < arrayBars.length; j++) {
-            arrayBars[j].style.backgroundColor = "#4FD1C5";
+            arrayBars[j].style.backgroundColor = teal;
           }
           setArray(array.sort((a, b) => a - b));
           handleChange(e, false);
