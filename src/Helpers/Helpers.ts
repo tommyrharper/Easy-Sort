@@ -31,6 +31,10 @@ export const calcSpeed = (delay: number): number =>
 export const calcDelay = (speed: number): number =>
   EFFECTIVE_MAX_DELAY - SPEED_FACTOR * speed;
 
-export const calcArrLength = (length: number) => Math.ceil(length/2);
+const MAX_ARRLENGTH = 20;
+const ARRLENGTH_DIVISOR = Math.floor(100 / MAX_ARRLENGTH);
 
-export const calcLength = (arrLength: number) => arrLength * 2;
+export const calcArrLength = (length: number) =>
+  Math.ceil(length / ARRLENGTH_DIVISOR);
+
+export const calcLength = (arrLength: number) => arrLength * ARRLENGTH_DIVISOR;
