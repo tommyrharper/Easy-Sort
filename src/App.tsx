@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.scss";
 import { useForm } from "./Hooks/useForm";
-import { Box, Heading, Select } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 import BarChart from "./Components/BarChart";
 import Controls from "./Components/Controls";
 
