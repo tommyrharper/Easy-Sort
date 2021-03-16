@@ -12,39 +12,50 @@ interface Values {
 
 interface Props {
   values: Values;
+  array: number[];
+  setArray: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
-const BarChart: React.FC<Props> = ({ values }) => {
-  const [array, setArray] = useState<number[]>(() =>
-    generateArray(values.arrLength)
-  );
+const BarChart: React.FC<Props> = ({ values, array, setArray }) => {
   const [isSorted, setSorted] = useState<boolean>(false);
 
   if (values.arrLength !== array.length)
     setArray(generateArray(values.arrLength));
 
-  const { margin, width, fontSize, fontWeight, calcHeight } = getBarChartStyling(values.arrLength);
-
-  console.log(`values.delay`, values.delay);
+  const {
+    margin,
+    width,
+    fontSize,
+    fontWeight,
+    calcHeight,
+  } = getBarChartStyling(values.arrLength);
 
   return (
     <div>
       <div className="barsContainer">
-        {array.map((x, i) => (
-          <Box
-            key={`a${x}b${i}c${margin}d${width}`}
-            className="bar"
-            height={`${calcHeight(x)}px`}
-            width={`${width}px`}
-            margin={`${margin}px`}
-            borderRadius="lg"
-            backgroundColor="teal.300"
-            fontWeight={fontWeight}
-            fontSize={`${fontSize}px`}
-          >
-            {x}
-          </Box>
-        ))}
+        {array.map((x, i) => {
+          let padding = 10;
+          const height = calcHeight(x);
+          if (padding >= height / 10) {
+            padding = 0;
+          }
+          return (
+            <Box
+              paddingTop={`${padding}px`}
+              key={`a${x}b${i}c${margin}d${width}`}
+              className="bar"
+              height={`${calcHeight(x)}px`}
+              width={`${width}px`}
+              margin={`${margin}px`}
+              borderRadius="lg"
+              backgroundColor="teal.300"
+              fontWeight={fontWeight}
+              fontSize={`${fontSize}px`}
+            >
+              {x}
+            </Box>
+          );
+        })}
       </div>
       <Button
         margin="40px"
