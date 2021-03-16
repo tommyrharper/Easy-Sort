@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./BarChart.scss";
 import { Box, Button } from "@chakra-ui/react";
-import { generateArray } from "../Helpers/Helpers";
+import { generateArray, getBarChartStyling } from "../Helpers/Helpers";
 import { bubbleSort } from "../Algos/bubbleSort";
 
 // const HEIGHT_MULTI = 50
@@ -26,17 +26,10 @@ const BarChart: React.FC<Props> = ({ values }) => {
   if (values.arrLength !== array.length)
     setArray(generateArray(values.arrLength));
 
-  const margin = 180 / ((values.arrLength - 1) * 2);
-  const width = 500 / values.arrLength;
-  let fontSize = 20;
-  let fontWeight = "bold";
-  if (width < 26) {
-    fontSize = width - 5;
-    fontWeight = "normal";
-    if (fontSize < 1) fontSize = 0;
-  }
-  const HEIGHT_MULTI = 500 / values.arrLength;
-  const calcHeight = (h: number) => h * HEIGHT_MULTI;
+  const { margin, width, fontSize, fontWeight, calcHeight } = getBarChartStyling(values.arrLength);
+
+  console.log(`values.delay`, values.delay);
+
   return (
     <div>
       <div className="barsContainer">

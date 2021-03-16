@@ -29,3 +29,25 @@ export const calcDelay = (speed: number): number => {
   if (delay <= MIN_DELAY) return MIN_DELAY;
   return delay;
 };
+
+export const getBarChartStyling = (arrLength: number) => {
+  const margin = 180 / ((arrLength - 1) * 2);
+  const width = 500 / arrLength;
+  let fontSize = 20;
+  let fontWeight = "bold";
+  if (width < 26) {
+    fontSize = width - 5;
+    fontWeight = "normal";
+    if (fontSize < 1) fontSize = 0;
+  }
+  const HEIGHT_MULTI = 500 / arrLength;
+  const calcHeight = (h: number) => h * HEIGHT_MULTI;
+
+  return {
+    margin: margin,
+    width: width,
+    fontSize: fontSize,
+    fontWeight: fontWeight,
+    calcHeight: calcHeight,
+  };
+};
