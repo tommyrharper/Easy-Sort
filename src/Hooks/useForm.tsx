@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { calcDelay, calcArrLength } from "../Helpers/Helpers";
+import { MIN_ARRLENGTH } from '../Helpers/Config';
 
 export const useForm = (initialValues: any) => {
   const [values, setValues] = useState(initialValues);
@@ -18,7 +19,7 @@ export const useForm = (initialValues: any) => {
           case 'length': {
             name = 'arrLength';
             value = calcArrLength(e);
-            if (value <= 5) value = 5;
+            if (value <= MIN_ARRLENGTH) value = MIN_ARRLENGTH;
             break;
           }
           default: {

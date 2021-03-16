@@ -9,6 +9,7 @@ import {
   SliderThumb,
 } from "@chakra-ui/react";
 import { calcSpeed, calcLength } from "../Helpers/Helpers";
+import { MIN_ARRLENGTH } from '../Helpers/Config';
 
 interface Values {
   algo: string;
@@ -51,7 +52,7 @@ const Controls: React.FC<Props> = ({ values, handleChange }) => {
       </Slider>
       <FormLabel>Select Array Length:</FormLabel>
       <Slider
-        min={5}
+        min={MIN_ARRLENGTH}
         defaultValue={calcLength(values.arrLength)}
         onChange={(e) => handleChange(e, "length")}
         colorScheme="teal"
