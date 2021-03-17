@@ -21,7 +21,6 @@ export const executeAnimation = (
   calcHeight: (h: number) => number,
   setArray: React.Dispatch<React.SetStateAction<number[]>>,
   handleChange: any,
-  e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   teal: string,
   algorithm: string
 ) => {

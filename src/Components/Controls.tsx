@@ -116,7 +116,6 @@ const Controls: React.FC<Props> = ({
             calcHeight,
             setArray,
             handleChange,
-            e,
             color,
             algo
           );
