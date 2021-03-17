@@ -58,7 +58,13 @@ export const executeAnimation = (
             arrayBars[j].style.backgroundColor = teal;
           }
           setArray(array.sort((a, b) => a - b));
-          handleChange(e, false);
+          handleChange(
+            {
+              isSorting: false,
+              isSorted: true,
+            },
+            "passObject"
+          );
         }, delay);
       }
     }, i * delay);
