@@ -8,7 +8,6 @@ import {
   SliderFilledTrack,
   SliderThumb,
   Button,
-  useToken,
 } from "@chakra-ui/react";
 import { calcSpeed } from "../Helpers/Helpers";
 import {
@@ -34,6 +33,7 @@ interface Props {
   setArray: React.Dispatch<React.SetStateAction<number[]>>;
   array: number[];
   barStyle: any;
+  color: string;
 }
 
 const Controls: React.FC<Props> = ({
@@ -42,11 +42,12 @@ const Controls: React.FC<Props> = ({
   setArray,
   array,
   barStyle,
+  color
 }) => {
   const { isSorting, algo, arrLength, delay } = values;
   const { calcHeight } = barStyle;
   const speed = calcSpeed(delay);
-  const teal = useToken("colors", "teal.300");
+
   return (
     <Box marginLeft="20px">
       <FormLabel>Select Sorting Algorithm:</FormLabel>
@@ -97,7 +98,7 @@ const Controls: React.FC<Props> = ({
         className="controlButtons"
         onClick={(e) => {
           handleChange(e, true);
-          bubbleSort(array, delay, calcHeight, setArray, handleChange, e, teal);
+          bubbleSort(array, delay, calcHeight, setArray, handleChange, e, color);
         }}
       >
         Sort

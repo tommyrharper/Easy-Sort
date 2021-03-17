@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.scss";
 import { useForm } from "./Hooks/useForm";
-import { Box, Heading } from "@chakra-ui/react";
+import { Box, Heading, useToken } from "@chakra-ui/react";
 import BarChart from "./Components/BarChart";
 import Controls from "./Components/Controls";
 import { DEFAULT_ARR_LENGTH, DEFAULT_DELAY } from "./Helpers/Config";
@@ -29,19 +29,22 @@ export const App: React.FC = () => {
     setBarStyle(getBarChartStyling(arrLength));
   }, [arrLength]);
 
+  const teal = useToken("colors", "teal.300");
+
   return (
     <Box className="appContainer" fontSize="xl">
-      <Heading className="heading" size="2xl" color="teal.300">
+      <Heading className="heading" size="2xl" color={teal}>
         Easy-Sort
       </Heading>
       <Box marginBottom="20px" display="flex">
-        <BarChart array={array} barStyle={barStyle} />
+        <BarChart array={array} barStyle={barStyle} color={teal} />
         <Controls
           values={values}
           handleChange={handleChange}
           setArray={setArray}
           array={array}
           barStyle={barStyle}
+          color={teal}
         />
       </Box>
     </Box>

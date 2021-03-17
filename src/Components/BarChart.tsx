@@ -1,14 +1,14 @@
 import React from "react";
 import "./BarChart.scss";
-import { Box, useToken } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 interface Props {
   array: number[];
   barStyle: any;
+  color: string;
 }
 
-const BarChart: React.FC<Props> = ({ array, barStyle }) => {
+const BarChart: React.FC<Props> = ({ array, barStyle, color }) => {
   const { margin, width, fontSize, fontWeight, calcHeight } = barStyle;
-  const teal = useToken("colors", "teal.300");
 
   return (
     <div>
@@ -28,7 +28,7 @@ const BarChart: React.FC<Props> = ({ array, barStyle }) => {
               width={`${width}px`}
               margin={`${margin}px`}
               borderRadius="lg"
-              backgroundColor={teal}
+              backgroundColor={color}
               fontWeight={fontWeight}
               fontSize={`${fontSize}px`}
             >
