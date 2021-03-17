@@ -1,5 +1,4 @@
 interface Animation {
-  startValues: number[];
   endValues: number[];
   positions: number[];
 }
@@ -19,7 +18,6 @@ export const getBubbleSortAnimations = (array: number[]): Animation[] => {
         changeMade = true;
       }
       const animation: Animation = {
-        startValues: [bar1, bar2],
         endValues: [arr[i], arr[i + 1]],
         positions: [i, i + 1],
       };
@@ -44,7 +42,7 @@ export const bubbleSort = (
     "bar"
   ) as HTMLCollectionOf<HTMLElement>;
   for (let i = 0; i < animations.length; i++) {
-    const { startValues, endValues, positions } = animations[i];
+    const { endValues, positions } = animations[i];
     const pos1 = positions[0];
     const pos2 = positions[1];
     const height1 = `${calcHeight(endValues[0])}px`;
