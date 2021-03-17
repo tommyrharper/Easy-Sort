@@ -12,7 +12,7 @@ const handleNumber = (e: number, opt?: string) => {
       return {
         name: name,
         value: value,
-      }
+      };
     }
     case "length": {
       name = "arrLength";
@@ -21,13 +21,13 @@ const handleNumber = (e: number, opt?: string) => {
       return {
         name: name,
         value: value,
-      }
+      };
     }
     default: {
-      throw  new Error('Number used without option');
+      throw new Error("Number used without option");
     }
   }
-}
+};
 
 export const useForm = (initialValues: any) => {
   const [values, setValues] = useState(initialValues);
@@ -36,7 +36,18 @@ export const useForm = (initialValues: any) => {
     (e: React.ChangeEvent<HTMLSelectElement>, opt?: any) => {
       let name: string;
       let value: string | number | boolean;
-      if (typeof e === "number") {
+
+      if (opt === "passObject") {
+        for (const [key, val] of Object.entries(e)) {
+          values[key] = val;
+        }
+        setValues(values);
+        return;
+      }
+      if (typeof e === "string") {
+        name = e;
+        value = opt;
+      } else if (typeof e === "number") {
         const nameValueObj = handleNumber(e, opt);
         name = nameValueObj.name;
         value = nameValueObj.value;
@@ -44,9 +55,8 @@ export const useForm = (initialValues: any) => {
         name = e.target.name;
         value = e.target.value;
       }
-      if (name === 'isSorting') {
-        value = opt;
-      }
+      if (name === "isSorting") value = opt;
+
       setValues({
         ...values,
         [name]: value,
