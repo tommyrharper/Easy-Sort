@@ -107,7 +107,7 @@ const Controls: React.FC<Props> = ({
       <Button
         className="controlButtons"
         isDisabled={isSorting}
-        // margin="20px"
+        margin="20px"
         onClick={() => {
           setArray(generateArray(arrLength));
         }}

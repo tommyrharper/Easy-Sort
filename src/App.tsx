@@ -33,19 +33,21 @@ export const App: React.FC = () => {
 
   return (
     <Box className="appContainer" fontSize="xl">
-      <Heading className="heading" size="2xl" color={teal}>
+      <Heading className="heading" size="2xl" margin="20px" color={teal}>
         Easy-Sort
       </Heading>
-      <Box marginBottom="20px" display="flex">
+      <Box display="flex">
         <BarChart array={array} barStyle={barStyle} color={teal} />
-        <Controls
-          values={values}
-          handleChange={handleChange}
-          setArray={setArray}
-          array={array}
-          barStyle={barStyle}
-          color={teal}
-        />
+        <Box margin="40px">
+          <Controls
+            values={values}
+            handleChange={handleChange}
+            setArray={setArray}
+            array={array}
+            barStyle={barStyle}
+            color={teal}
+          />
+        </Box>
       </Box>
     </Box>
   );
