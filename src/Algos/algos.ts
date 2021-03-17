@@ -2,14 +2,14 @@ import { getBubbleSortAnimations } from "./bubbleSort";
 import { getInsertionSortAnimations } from "./insertionSort";
 
 interface AnimationFuncs {
-  'Bubble Sort': any;
-  'Insertion Sort': any;
+  "Bubble Sort": any;
+  "Insertion Sort": any;
 }
 
 const animationFuncs: AnimationFuncs = {
-  'Bubble Sort': getBubbleSortAnimations,
-  'Insertion Sort': getInsertionSortAnimations
-}
+  "Bubble Sort": getBubbleSortAnimations,
+  "Insertion Sort": getInsertionSortAnimations,
+};
 
 export const executeAnimation = (
   array: number[],
@@ -19,7 +19,7 @@ export const executeAnimation = (
   handleChange: any,
   e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   teal: string,
-  algorithm: string,
+  algorithm: string
 ) => {
   const animations = (animationFuncs as any)[algorithm](array);
   const arrayBars = document.getElementsByClassName(

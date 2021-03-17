@@ -1,7 +1,4 @@
-interface Animation {
-  endValues: number[];
-  positions: number[];
-}
+import { Animation } from "../Helpers/Interfaces";
 
 export const getBubbleSortAnimations = (array: number[]): Animation[] => {
   const arr = [...array];
@@ -25,51 +22,4 @@ export const getBubbleSortAnimations = (array: number[]): Animation[] => {
     }
   }
   return animations;
-};
-
-export const bubbleSort = (
-  array: number[],
-  delay: number,
-  calcHeight: (h: number) => number,
-  setArray: React.Dispatch<React.SetStateAction<number[]>>,
-  handleChange: any,
-  e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  teal: string,
-) => {
-  const animations = getBubbleSortAnimations(array);
-  const arrayBars = document.getElementsByClassName(
-    "bar"
-  ) as HTMLCollectionOf<HTMLElement>;
-  for (let i = 0; i < animations.length; i++) {
-    const { endValues, positions } = animations[i];
-    const pos1 = positions[0];
-    const pos2 = positions[1];
-    const height1 = `${calcHeight(endValues[0])}px`;
-    const height2 = `${calcHeight(endValues[1])}px`;
-    setTimeout(() => {
-      for (let j = 0; j < arrayBars.length; j++) {
-        if (j !== pos1 && j !== pos2) {
-          arrayBars[j].style.backgroundColor = teal;
-        }
-      }
-      arrayBars[pos1].style.backgroundColor = "red";
-      arrayBars[pos2].style.backgroundColor = "red";
-      setTimeout(() => {
-        arrayBars[pos1].style.height = height1;
-        arrayBars[pos2].style.height = height2;
-        arrayBars[pos1].innerHTML = `${endValues[0]}`;
-        arrayBars[pos2].innerHTML = `${endValues[1]}`;
-      }, Math.floor(delay / 3));
-      if (i === animations.length - 1) {
-        // clear all bars
-        setTimeout(() => {
-          for (let j = 0; j < arrayBars.length; j++) {
-            arrayBars[j].style.backgroundColor = teal;
-          }
-          setArray(array.sort((a, b) => a - b));
-          handleChange(e, false);
-        }, delay);
-      }
-    }, i * delay);
-  }
 };
