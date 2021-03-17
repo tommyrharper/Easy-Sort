@@ -1,14 +1,18 @@
 import { getBubbleSortAnimations } from "./bubbleSort";
 import { getInsertionSortAnimations } from "./insertionSort";
+import { getSelectionSortAnimations } from "./selectionSort";
+import { Animation } from "../Helpers/Interfaces";
 
 interface AnimationFuncs {
-  "Bubble Sort": any;
-  "Insertion Sort": any;
+  "Bubble Sort": (array: number[]) => Animation[];
+  "Insertion Sort": (array: number[]) => Animation[];
+  "Selection Sort": (array: number[]) => Animation[];
 }
 
 const animationFuncs: AnimationFuncs = {
   "Bubble Sort": getBubbleSortAnimations,
   "Insertion Sort": getInsertionSortAnimations,
+  "Selection Sort": getSelectionSortAnimations,
 };
 
 export const executeAnimation = (
@@ -29,6 +33,7 @@ export const executeAnimation = (
     const { endValues, positions } = animations[i];
     const pos1 = positions[0];
     const pos2 = positions[1];
+    const pos3 = positions[2];
     const height1 = `${calcHeight(endValues[0])}px`;
     const height2 = `${calcHeight(endValues[1])}px`;
     setTimeout(() => {
@@ -39,6 +44,7 @@ export const executeAnimation = (
       }
       arrayBars[pos1].style.backgroundColor = "red";
       arrayBars[pos2].style.backgroundColor = "red";
+      if (pos3) arrayBars[pos3].style.backgroundColor = "red";
       setTimeout(() => {
         arrayBars[pos1].style.height = height1;
         arrayBars[pos2].style.height = height2;
