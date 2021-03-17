@@ -20,13 +20,14 @@ export const App: React.FC = () => {
 
   const { arrLength } = values;
 
-  const [barStyle, setBarStyle] = useState<any>(() => getBarChartStyling(arrLength));
+  const [barStyle, setBarStyle] = useState<any>(() =>
+    getBarChartStyling(arrLength)
+  );
 
   useEffect(() => {
     setArray(generateArray(arrLength));
     setBarStyle(getBarChartStyling(arrLength));
   }, [arrLength]);
-
 
   return (
     <Box className="appContainer" fontSize="xl">
@@ -34,14 +35,14 @@ export const App: React.FC = () => {
         Easy-Sort
       </Heading>
       <Box marginBottom="20px" display="flex">
-        <BarChart
+        <BarChart array={array} barStyle={barStyle} />
+        <Controls
           values={values}
-          array={array}
-          setArray={setArray}
-          barStyle={barStyle}
           handleChange={handleChange}
+          setArray={setArray}
+          array={array}
+          barStyle={barStyle}
         />
-        <Controls values={values} handleChange={handleChange} />
       </Box>
     </Box>
   );

@@ -8,6 +8,7 @@ import {
   SliderFilledTrack,
   SliderThumb,
   Button,
+  useToken,
 } from "@chakra-ui/react";
 import { calcSpeed } from "../Helpers/Helpers";
 import {
@@ -17,25 +18,40 @@ import {
   MIN_SPEED,
 } from "../Helpers/Config";
 import "./Controls.scss";
+import { bubbleSort } from "../Algos/bubbleSort";
+import { generateArray } from "../Helpers/Helpers";
 
 interface Values {
   algo: string;
   delay: number;
   arrLength: number;
+  isSorting: boolean;
 }
 
 interface Props {
   values: Values;
   handleChange: any;
+  setArray: React.Dispatch<React.SetStateAction<number[]>>;
+  array: number[];
+  barStyle: any;
 }
 
-const Controls: React.FC<Props> = ({ values, handleChange }) => {
-  const speed = calcSpeed(values.delay);
+const Controls: React.FC<Props> = ({
+  values,
+  handleChange,
+  setArray,
+  array,
+  barStyle,
+}) => {
+  const { isSorting, algo, arrLength, delay } = values;
+  const { calcHeight } = barStyle;
+  const speed = calcSpeed(delay);
+  const teal = useToken("colors", "teal.300");
   return (
     <Box marginLeft="20px">
       <FormLabel>Select Sorting Algorithm:</FormLabel>
       <Select
-        value={values.algo}
+        value={algo}
         onChange={handleChange}
         name="algo"
         marginBottom="20px"
@@ -64,7 +80,7 @@ const Controls: React.FC<Props> = ({ values, handleChange }) => {
       <Slider
         min={MIN_ARRLENGTH}
         max={MAX_ARRLENGTH}
-        defaultValue={values.arrLength}
+        defaultValue={arrLength}
         onChange={(e) => handleChange(e, "length")}
         colorScheme="teal"
         name="arrayLength"
@@ -74,11 +90,29 @@ const Controls: React.FC<Props> = ({ values, handleChange }) => {
         </SliderTrack>
         <SliderThumb />
       </Slider>
-      <Button marginTop="20px" className="controlButtons">Sort</Button>
+      <Button
+        name="isSorting"
+        isDisabled={isSorting}
+        marginTop="20px"
+        className="controlButtons"
+        onClick={(e) => {
+          handleChange(e, true);
+          bubbleSort(array, delay, calcHeight, setArray, handleChange, e, teal);
+        }}
+      >
+        Sort
+      </Button>
       <br />
-      <Button className="controlButtons">Shuffle</Button>
-      <br />
-      <Button className="controlButtons">Stop</Button>
+      <Button
+        className="controlButtons"
+        isDisabled={isSorting}
+        // margin="20px"
+        onClick={() => {
+          setArray(generateArray(arrLength));
+        }}
+      >
+        Shuffle
+      </Button>
     </Box>
   );
 };

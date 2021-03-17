@@ -1,35 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import "./BarChart.scss";
-import { Box, Button, useToken } from "@chakra-ui/react";
-import { generateArray } from "../Helpers/Helpers";
-import { bubbleSort } from "../Algos/bubbleSort";
-
-interface Values {
-  algo: string;
-  delay: number;
-  arrLength: number;
-  isSorted: boolean;
-  isSorting: boolean;
-}
-
+import { Box, useToken } from "@chakra-ui/react";
 interface Props {
-  values: Values;
   array: number[];
-  setArray: React.Dispatch<React.SetStateAction<number[]>>;
   barStyle: any;
-  handleChange: any;
 }
 
-const BarChart: React.FC<Props> = ({
-  values,
-  array,
-  setArray,
-  barStyle,
-  handleChange,
-}) => {
-  const { arrLength, isSorting } = values;
+const BarChart: React.FC<Props> = ({ array, barStyle }) => {
   const { margin, width, fontSize, fontWeight, calcHeight } = barStyle;
-  const teal = useToken('colors', 'teal.300');
+  const teal = useToken("colors", "teal.300");
 
   return (
     <div>
@@ -58,26 +37,6 @@ const BarChart: React.FC<Props> = ({
           );
         })}
       </div>
-      <Button
-        name="isSorting"
-        isDisabled={isSorting}
-        margin="40px"
-        onClick={(e) => {
-          handleChange(e, true);
-          bubbleSort(array, values.delay, calcHeight, setArray, handleChange, e, teal);
-        }}
-      >
-        Sort
-      </Button>
-      <Button
-        isDisabled={isSorting}
-        margin="40px"
-        onClick={() => {
-          setArray(generateArray(arrLength));
-        }}
-      >
-        Shuffle
-      </Button>
     </div>
   );
 };
