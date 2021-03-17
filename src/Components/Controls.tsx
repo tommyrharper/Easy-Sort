@@ -17,7 +17,7 @@ import {
   MIN_SPEED,
 } from "../Helpers/Config";
 import "./Controls.scss";
-import { bubbleSort } from "../Algos/bubbleSort";
+import { executeAnimation } from "../Algos/algos";
 import { generateArray } from "../Helpers/Helpers";
 
 interface Values {
@@ -42,7 +42,7 @@ const Controls: React.FC<Props> = ({
   setArray,
   array,
   barStyle,
-  color
+  color,
 }) => {
   const { isSorting, algo, arrLength, delay } = values;
   const { calcHeight } = barStyle;
@@ -98,7 +98,16 @@ const Controls: React.FC<Props> = ({
         className="controlButtons"
         onClick={(e) => {
           handleChange(e, true);
-          bubbleSort(array, delay, calcHeight, setArray, handleChange, e, color);
+          executeAnimation(
+            array,
+            delay,
+            calcHeight,
+            setArray,
+            handleChange,
+            e,
+            color,
+            algo
+          );
         }}
       >
         Sort
