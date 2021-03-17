@@ -25,6 +25,7 @@ interface Values {
   delay: number;
   arrLength: number;
   isSorting: boolean;
+  isSorted: boolean;
 }
 
 interface Props {
@@ -44,7 +45,7 @@ const Controls: React.FC<Props> = ({
   barStyle,
   color,
 }) => {
-  const { isSorting, algo, arrLength, delay } = values;
+  const { isSorting, algo, arrLength, delay, isSorted } = values;
   const { calcHeight } = barStyle;
   const speed = calcSpeed(delay);
 
@@ -53,7 +54,18 @@ const Controls: React.FC<Props> = ({
       <FormLabel>Select Sorting Algorithm:</FormLabel>
       <Select
         value={algo}
-        onChange={handleChange}
+        onChange={(e) => {
+          if (isSorted) {
+            setArray(generateArray(arrLength));
+            handleChange(
+              {
+                [e.target.name]: e.target.value,
+                isSorted: false,
+              },
+              "passObject"
+            );
+          } else handleChange(e);
+        }}
         name="algo"
         marginBottom="20px"
       >
@@ -119,6 +131,7 @@ const Controls: React.FC<Props> = ({
         margin="20px"
         onClick={() => {
           setArray(generateArray(arrLength));
+          handleChange("isSorted", false);
         }}
       >
         Shuffle
