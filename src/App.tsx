@@ -13,6 +13,7 @@ export const App: React.FC = () => {
     delay: DEFAULT_DELAY,
     arrLength: DEFAULT_ARR_LENGTH,
     isSorting: false,
+    isSorted: false,
   });
   const [array, setArray] = useState<number[]>(() =>
     generateArray(values.arrLength)
