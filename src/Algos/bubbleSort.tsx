@@ -21,7 +21,6 @@ export const getBubbleSortAnimations = (array: number[]): Animation[] => {
         endValues: [arr[i], arr[i + 1]],
         positions: [i, i + 1],
       };
-      animation.endValues = [arr[i], arr[i + 1]];
       animations.push(animation);
     }
   }
