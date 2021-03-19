@@ -50,3 +50,24 @@ export const selectionSort = (array: number[]): number[] => {
   }
   return arr;
 };
+
+const mergeSort = (array: number[]): any => {
+  const arr = [...array];
+  if (arr.length < 2) return arr;
+
+  const mid = Math.floor(arr.length / 2);
+
+  const left = arr;
+  const right = arr.splice(mid);
+
+  return merge(mergeSort(left), mergeSort(right));
+}
+
+const merge = (left: number[], right: number[]) => {
+  let arr = [];
+  while (left.length && right.length) {
+    if (left[0] < right[0]) arr.push(left.shift())
+    else arr.push(right.shift());
+  }
+  return [...arr, ...left, ...right];
+}
