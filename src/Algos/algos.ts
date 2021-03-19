@@ -10,7 +10,7 @@ interface AnimationFuncs {
   "Merge Sort": (array: number[]) => Animation[];
 }
 
-const animationFuncs: AnimationFuncs = {
+export const animationFuncs: AnimationFuncs = {
   "Bubble Sort": getBubbleSortAnimations,
   "Insertion Sort": getInsertionSortAnimations,
   "Selection Sort": getSelectionSortAnimations,
