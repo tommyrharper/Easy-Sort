@@ -1,18 +1,20 @@
 import { getBubbleSortAnimations } from "./bubbleSort";
 import { getInsertionSortAnimations } from "./insertionSort";
 import { getSelectionSortAnimations } from "./selectionSort";
+import { getMergeSortAnimations } from "./mergeSort";
 import { Animation } from "../Helpers/Interfaces";
-
 interface AnimationFuncs {
   "Bubble Sort": (array: number[]) => Animation[];
   "Insertion Sort": (array: number[]) => Animation[];
   "Selection Sort": (array: number[]) => Animation[];
+  "Merge Sort": (array: number[]) => Animation[];
 }
 
 const animationFuncs: AnimationFuncs = {
   "Bubble Sort": getBubbleSortAnimations,
   "Insertion Sort": getInsertionSortAnimations,
   "Selection Sort": getSelectionSortAnimations,
+  "Merge Sort": getMergeSortAnimations,
 };
 
 export const executeAnimation = (
