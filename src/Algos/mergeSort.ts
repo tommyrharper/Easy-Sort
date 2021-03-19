@@ -90,14 +90,14 @@ const merge = (leftObj: ArrObj, rightObj: ArrObj): ArrObj => {
     const pos = leftIndexes[0] + arr.length + i;
     animations.push({
       positions: [pos, pos],
-      endValues: [left[i], left[i]]
+      endValues: [left[i], left[i]],
     });
   }
   for (let i = 0; i < right.length; i++) {
     const pos = leftIndexes[0] + arr.length + i;
     animations.push({
       positions: [pos, pos],
-      endValues: [right[i], right[i]]
+      endValues: [right[i], right[i]],
     });
   }
 
