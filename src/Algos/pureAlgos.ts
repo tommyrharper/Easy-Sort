@@ -51,7 +51,7 @@ export const selectionSort = (array: number[]): number[] => {
   return arr;
 };
 
-const mergeSort = (array: number[]): any => {
+export const mergeSort = (array: number[]): any => {
   const arr = [...array];
   if (arr.length < 2) return arr;
 
