@@ -19,6 +19,7 @@ import {
 import "./Controls.scss";
 import { executeAnimation } from "../Algos/algos";
 import { generateArray } from "../Helpers/Helpers";
+import { AlgoInformation } from "../Algos/AlgoInformation";
 
 interface Values {
   algo: string;
@@ -53,6 +54,7 @@ const Controls: React.FC<Props> = ({
     <Box marginLeft="20px">
       <FormLabel>Select Sorting Algorithm:</FormLabel>
       <Select
+        isDisabled={isSorting}
         value={algo}
         onChange={(e) => {
           if (isSorted) {
@@ -77,6 +79,7 @@ const Controls: React.FC<Props> = ({
       </Select>
       <FormLabel>Select Speed:</FormLabel>
       <Slider
+        isDisabled={isSorting}
         min={MIN_SPEED}
         max={MAX_SPEED}
         defaultValue={speed}
@@ -91,6 +94,7 @@ const Controls: React.FC<Props> = ({
       </Slider>
       <FormLabel>Select Array Length:</FormLabel>
       <Slider
+        isDisabled={isSorting}
         min={MIN_ARRLENGTH}
         max={MAX_ARRLENGTH}
         defaultValue={arrLength}
@@ -135,6 +139,7 @@ const Controls: React.FC<Props> = ({
       >
         Shuffle
       </Button>
+      <AlgoInformation algo={algo} />
     </Box>
   );
 };
