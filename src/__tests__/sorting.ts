@@ -1,4 +1,3 @@
-import { animationFuncs } from './../Algos/algos';
 import { generateArray } from "./../Helpers/Helpers";
 import {
   mergeSort,
@@ -12,7 +11,7 @@ describe("Test sorting algorithms", () => {
   let array: number[];
   let javaScriptSort: number[];
   beforeEach(() => {
-    array = generateArray(50);
+    array = generateArray(100);
     javaScriptSort = [...array].sort((a, b) => a - b);
   });
 
@@ -32,12 +31,12 @@ describe("Test sorting algorithms", () => {
   });
 
   it("Pure Selection Sort Sorts an Array", () => {
-    let sortedArray = insertionSort(array);
+    let sortedArray = selectionSort(array);
     expect(sortedArray).toEqual(javaScriptSort);
   });
 
   it("Merge Sort should correctly sort an array", () => {
-    let sortedArray = getMergeSortData(array).arr;
+    let sortedArray = getMergeSortData(array);
     expect(sortedArray).toEqual(javaScriptSort);
   });
 });
