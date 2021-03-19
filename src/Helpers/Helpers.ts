@@ -30,8 +30,11 @@ export const calcDelay = (s: number) => BASE ** (MAX_SPEED - s);
 export const calcSpeed = (d: number) => MAX_SPEED - logb(d);
 
 export const getBarChartStyling = (arrLength: number) => {
+  const barChartWidth = 0.6 * window.innerWidth;
+  const barChartHeight = 0.8 * window.innerHeight;
+  console.log(`barChartWidth`, barChartWidth)
   const margin = 180 / ((arrLength - 1) * 2);
-  const width = 500 / arrLength;
+  const width = barChartWidth / arrLength;
   let fontSize = 20;
   let fontWeight = "bold";
   if (width < 26) {
@@ -39,7 +42,7 @@ export const getBarChartStyling = (arrLength: number) => {
     fontWeight = "normal";
     if (fontSize < 1) fontSize = 0;
   }
-  const HEIGHT_MULTI = 500 / arrLength;
+  const HEIGHT_MULTI = barChartHeight / arrLength;
   const calcHeight = (h: number) => h * HEIGHT_MULTI;
 
   return {

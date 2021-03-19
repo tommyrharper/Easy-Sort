@@ -19,7 +19,7 @@ export const App: React.FC = () => {
     generateArray(values.arrLength)
   );
 
-  const { arrLength } = values;
+  const { arrLength, algo } = values;
 
   const [barStyle, setBarStyle] = useState<any>(() =>
     getBarChartStyling(arrLength)
@@ -35,9 +35,9 @@ export const App: React.FC = () => {
   return (
     <Box className="appContainer" fontSize="xl">
       <Heading className="heading" size="2xl" margin="20px" color={teal}>
-        Easy-Sort
+        {algo}
       </Heading>
-      <Box display="flex">
+      <Box className="centralContainer">
         <BarChart array={array} barStyle={barStyle} color={teal} />
         <Box margin="40px">
           <Controls
