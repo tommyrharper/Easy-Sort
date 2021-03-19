@@ -72,8 +72,8 @@ const Controls: React.FC<Props> = ({
         <option value="Bubble Sort">Bubble Sort</option>
         <option value="Insertion Sort">Insertion Sort</option>
         <option value="Selection Sort">Selection Sort</option>
-        {/* <option value="Selection Sort">Merge Sort</option>
-        <option value="Selection Sort">Quick Sort</option> */}
+        <option value="Merge Sort">Merge Sort</option>
+        {/* <option value="Selection Sort">Quick Sort</option> */}
       </Select>
       <FormLabel>Select Speed:</FormLabel>
       <Slider
