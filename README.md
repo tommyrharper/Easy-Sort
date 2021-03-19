@@ -12,9 +12,12 @@ The aim of this program is to help developers learn sorting algorithms, through 
 - [ ] As a user I be able try and sort the array myself by using drag and drop.
 - [ ] As a user, I should be told whether my manual approach to sorting the array is correct or incorrect.
 
-## Setup
+## Node Modules Setup
 
 ```
 npm install --save node-sass
 npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
+npm i -D jest typescript
+npm i -D ts-jest @types/jest
+npx ts-jest config:init
 ```
