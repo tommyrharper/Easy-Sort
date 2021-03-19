@@ -73,3 +73,7 @@ export const merge = (left: ArrObj, right: ArrObj): ArrObj => {
 export const getMergeSortAnimations = (array: number[]): Animation[] => {
   return generateMergeSortAnimations(format(array)).animations;
 }
+
+export const getMergeSortData = (array: number[]) => {
+  return generateMergeSortAnimations(format(array));
+}
