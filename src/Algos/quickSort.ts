@@ -12,7 +12,8 @@ export const getQuickSortAnimations = (array: number[]): Animation[] => {
     var temp = array[leftIndex];
     array[leftIndex] = array[rightIndex];
     array[rightIndex] = temp;
-    addAnimation(array, leftIndex, rightIndex, pivot, ["red", "red", "blue"]);
+    const color = array[leftIndex] === array[rightIndex] ? 'blue' : 'red';
+    addAnimation(array, leftIndex, rightIndex, pivot, [color, color, "blue"]);
   };
 
   const addAnimation = (
@@ -67,10 +68,6 @@ export const getQuickSortAnimations = (array: number[]): Animation[] => {
     var index;
     if (array.length > 1) {
       index = partition(array, left, right); //index returned from partition
-      // animations.push({
-      //   positions: [index, index],
-      //   endValues: [array[index], array[index]]
-      // })
       if (left < index - 1) {
         //more elements on the left side of the pivot
         generateQuickSortAnimations(array, left, index - 1);
