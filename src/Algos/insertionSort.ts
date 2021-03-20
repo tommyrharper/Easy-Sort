@@ -9,7 +9,7 @@ export const getInsertionSortAnimations = (array: number[]): Animation[] => {
       const animation: Animation = {
         positions: [i - 1, i],
         endValues: [arr[i - 1], arr[i]],
-        colors: ['red', 'red']
+        colors: ['yellow', 'yellow']
       };
       animations.push(animation);
     }
