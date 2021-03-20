@@ -1,5 +1,7 @@
 # Easy-Sort
 
+Visit the website here: https://easy-sort.netlify.app/
+
 The aim of this program is to help developers learn sorting algorithms, through an easy and intuitive UI, that allows devs to absorb the high-level concepts on an intuitive level, and forces them to check their understanding.
 
 ## User Stories
@@ -13,6 +15,7 @@ The aim of this program is to help developers learn sorting algorithms, through 
 - [x] Merge sort should highlight multiple bars at a time.
 - [x] Find type of handleChange.
   - [ ] Find type of handleChange arguments.
+- [ ] Make the barChart styling adjust dynamically as page size changes.
 - [ ] As a user I be able try and sort the array myself by using drag and drop.
 - [ ] As a user, I should be told whether my manual approach to sorting the array is correct or incorrect.
 
