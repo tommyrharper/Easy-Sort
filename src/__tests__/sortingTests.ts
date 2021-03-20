@@ -1,4 +1,4 @@
-import { generateArray } from "./../Helpers/Helpers";
+import { generateArray } from "../Helpers/Helpers";
 import {
   mergeSort,
   bubbleSort,
@@ -6,7 +6,7 @@ import {
   selectionSort,
   quickSort
 } from "../Algos/pureAlgos";
-import { getMergeSortData } from "./../Algos/mergeSort";
+import { getMergeSortData } from "../Algos/mergeSort";
 
 describe("Test sorting algorithms", () => {
   let array: number[];
