@@ -32,7 +32,6 @@ export const calcSpeed = (d: number) => MAX_SPEED - logb(d);
 export const getBarChartStyling = (arrLength: number) => {
   const barChartWidth = 0.6 * window.innerWidth;
   const barChartHeight = 0.8 * window.innerHeight;
-  console.log(`barChartWidth`, barChartWidth)
   const margin = 180 / ((arrLength - 1) * 2);
   const width = barChartWidth / arrLength;
   let fontSize = 20;
