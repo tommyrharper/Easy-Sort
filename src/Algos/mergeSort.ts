@@ -22,13 +22,11 @@ export const generateMergeSortAnimations = (arrayObj: ArrObj): ArrObj => {
 
   const left = {
     arr: arr,
-    // index: [index[0], mid - 1],
     index: [index[0], index[0] + mid - 1],
     animations: [],
   };
   const right = {
     arr: arr.splice(mid),
-    // index: [mid, index[1]],
     index: [index[0] + mid, index[1]],
     animations: [],
   };
@@ -73,6 +71,7 @@ const merge = (leftObj: ArrObj, rightObj: ArrObj): ArrObj => {
       animations.push({
         positions: [pos, rightIndexes[0] + rightIndex],
         endValues: [leftNum, rightNum],
+        colors: ['red', 'yellow']
       });
       leftIndex++;
     } else {
@@ -82,6 +81,7 @@ const merge = (leftObj: ArrObj, rightObj: ArrObj): ArrObj => {
       animations.push({
         positions: [pos, rightIndexes[0] + rightIndex],
         endValues: [rightNum, rightNum],
+        colors: ['red', 'yellow']
       });
       rightIndex++;
     }
@@ -91,6 +91,7 @@ const merge = (leftObj: ArrObj, rightObj: ArrObj): ArrObj => {
     animations.push({
       positions: [pos, pos],
       endValues: [left[i], left[i]],
+      colors: ['red', 'red']
     });
   }
   for (let i = 0; i < right.length; i++) {
@@ -98,6 +99,7 @@ const merge = (leftObj: ArrObj, rightObj: ArrObj): ArrObj => {
     animations.push({
       positions: [pos, pos],
       endValues: [right[i], right[i]],
+      colors: ['red', 'red']
     });
   }
 
