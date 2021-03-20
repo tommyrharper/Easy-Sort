@@ -40,7 +40,7 @@ export const getHeapSortAnimations = (array: number[]): Animation[] => {
     if (right < size && array[right] > array[max]) max = right;
 
     // if max is not root
-    if (max != i) {
+    if (max !== i) {
       // swap
       let temp = array[i];
       array[i] = array[max];
