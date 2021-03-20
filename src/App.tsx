@@ -33,6 +33,20 @@ export const App: React.FC = () => {
 
   const teal = useToken("colors", "teal.300");
 
+  useEffect(() => {
+    // Handler to call on window resize
+    function handleResize() {
+      setBarStyle(getBarChartStyling(arrLength));
+    }
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+    // Call handler right away so state gets updated with initial window size
+    handleResize();
+    // Remove event listener on cleanup
+    return () => window.removeEventListener("resize", handleResize);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Box className="appContainer" fontSize="xl">
       <Heading className="heading" size="2xl" margin="20px" color={teal}>
