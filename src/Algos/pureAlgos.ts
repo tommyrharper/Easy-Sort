@@ -63,7 +63,7 @@ export const mergeSort = (array: number[]): any => {
   return merge(mergeSort(left), mergeSort(right));
 }
 
-const merge = (left: number[], right: number[]) => {
+const merge = (left: number[], right: number[]): (number | undefined)[] => {
   let arr = [];
   while (left.length && right.length) {
     if (left[0] < right[0]) arr.push(left.shift())

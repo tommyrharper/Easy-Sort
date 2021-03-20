@@ -6,6 +6,7 @@ import BarChart from "./Components/BarChart";
 import Controls from "./Components/Controls";
 import { DEFAULT_ARR_LENGTH, DEFAULT_DELAY } from "./Helpers/Config";
 import { generateArray, getBarChartStyling } from "./Helpers/Helpers";
+import { BarStyle } from './Helpers/Interfaces';
 
 export const App: React.FC = () => {
   const [values, handleChange] = useForm({
@@ -21,7 +22,7 @@ export const App: React.FC = () => {
 
   const { arrLength, algo } = values;
 
-  const [barStyle, setBarStyle] = useState<any>(() =>
+  const [barStyle, setBarStyle] = useState<BarStyle>(() =>
     getBarChartStyling(arrLength)
   );
 

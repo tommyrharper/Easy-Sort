@@ -20,6 +20,7 @@ import "./Controls.scss";
 import { executeAnimation } from "../Algos/algos";
 import { generateArray } from "../Helpers/Helpers";
 import { AlgoInformation } from "../Algos/AlgoInformation";
+import { BarStyle } from '../Helpers/Interfaces';
 
 interface Values {
   algo: string;
@@ -31,10 +32,10 @@ interface Values {
 
 interface Props {
   values: Values;
-  handleChange: any;
+  handleChange: (e: any, opt?: any) => void,
   setArray: React.Dispatch<React.SetStateAction<number[]>>;
   array: number[];
-  barStyle: any;
+  barStyle: BarStyle;
   color: string;
 }
 

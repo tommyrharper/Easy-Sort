@@ -11,6 +11,7 @@ The aim of this program is to help developers learn sorting algorithms, through 
 - [x] As a user I be able see an animation of how the array is sorting itself, for merge sort.
 - [x] There should  be a stop button for the array.
 - [ ] Merge sort should highlight multiple bars at a time.
+- [ ] Find type of handleChange.
 - [ ] As a user I be able try and sort the array myself by using drag and drop.
 - [ ] As a user, I should be told whether my manual approach to sorting the array is correct or incorrect.
 
