@@ -51,7 +51,7 @@ const Controls: React.FC<Props> = ({
   const { calcHeight } = barStyle;
   const speed = calcSpeed(delay);
 
-  const clearTimeouts = () => {
+  const stop = () => {
     for (let i = 0; i < timeouts.length; i++) clearTimeout(timeouts[i]);
     const arrayBars = document.getElementsByClassName(
       "bar"
@@ -66,6 +66,27 @@ const Controls: React.FC<Props> = ({
       },
       "passObject"
     );
+  };
+
+  const sort = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    handleChange(e, true);
+    setTimeouts(
+      executeAnimation(
+        array,
+        delay,
+        calcHeight,
+        setArray,
+        handleChange,
+        color,
+        algo,
+        setTimeouts
+      )
+    );
+  };
+
+  const shuffle = () => {
+    setArray(generateArray(arrLength));
+    handleChange("isSorted", false);
   };
 
   return (
@@ -130,21 +151,7 @@ const Controls: React.FC<Props> = ({
         isDisabled={isSorting}
         marginTop="20px"
         className="controlButtons"
-        onClick={(e) => {
-          handleChange(e, true);
-          setTimeouts(
-            executeAnimation(
-              array,
-              delay,
-              calcHeight,
-              setArray,
-              handleChange,
-              color,
-              algo,
-              setTimeouts
-            )
-          );
-        }}
+        onClick={sort}
       >
         Sort
       </Button>
@@ -152,7 +159,7 @@ const Controls: React.FC<Props> = ({
         isDisabled={!isSorting}
         marginTop="20px"
         className="controlButtons"
-        onClick={() => clearTimeouts()}
+        onClick={stop}
       >
         Stop
       </Button>
@@ -161,10 +168,7 @@ const Controls: React.FC<Props> = ({
         className="controlButtons"
         isDisabled={isSorting}
         margin="20px"
-        onClick={() => {
-          setArray(generateArray(arrLength));
-          handleChange("isSorted", false);
-        }}
+        onClick={shuffle}
       >
         Shuffle
       </Button>
