@@ -91,6 +91,21 @@ export const AlgoInformation: React.FC<{ algo: string }> = ({ algo }) => {
           Worst case: O(1)
         </Text>
       );
+    case "Radix Sort":
+      return (
+        <Text className="algoInfoContainer">
+          <b>Time complexity:</b>
+          <br />
+          Best case: O(nk)
+          <br />
+          Worst case: O(nk)<br />
+          Average: O(nk)<br />
+          <br />
+          <b>Space complexity:</b>
+          <br />
+          Worst case: O(n + k)
+        </Text>
+      );
     default:
       return <noscript />;
   }

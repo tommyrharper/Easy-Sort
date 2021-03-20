@@ -174,3 +174,46 @@ export const heapSort = (array: number[]): number[] => {
   heapSort(arr);
   return arr;
 };
+
+export const radixSort = (array: number[]) => {
+  const arr = [...array];
+
+  const getNum = (num: number, index: number): number | string=> {
+    const strNum = String(num);
+    let end = strNum.length - 1;
+    const foundNum = strNum[end - index];
+
+    if (foundNum === undefined) return 0;
+    else return foundNum;
+  };
+
+  const largestNum = (arr: number[]): number => {
+    let largest = "0";
+
+    arr.forEach((num: number) => {
+      const strNum = String(num);
+
+      if (strNum.length > largest.length) largest = strNum;
+    });
+
+    return largest.length;
+  };
+
+  const radixSort = (arr: number[]) => {
+    let maxLength = largestNum(arr);
+
+    for (let i = 0; i < maxLength; i++) {
+      let buckets: any = Array.from({ length: 10 }, () => []);
+
+      for (let j = 0; j < arr.length; j++) {
+        let num = getNum(arr[j], i);
+
+        if (num !== undefined) buckets[num].push(arr[j]);
+      }
+      arr = buckets.flat();
+    }
+    return arr;
+  };
+
+  return radixSort(arr);
+};

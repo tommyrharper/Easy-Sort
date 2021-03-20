@@ -24,7 +24,7 @@ const BarChart: React.FC<Props> = ({ array, barStyle, color }) => {
             paddingTop={`${padding}px`}
             key={`a${x}b${i}c${margin}d${width}`}
             className="bar"
-            height={`${calcHeight(x)}px`}
+            height={`${height}px`}
             width={`${width}px`}
             margin={`${margin}px`}
             borderRadius="lg"
@@ -36,6 +36,8 @@ const BarChart: React.FC<Props> = ({ array, barStyle, color }) => {
           </Box>
         );
       })}
+      <div style={{height: `${calcHeight(array.length)}px`, width: '0px'}}>
+      </div>
     </div>
   );
 };

@@ -1,3 +1,4 @@
+import { getRadixSortAnimations } from './radixSort';
 import { getBubbleSortAnimations } from "./bubbleSort";
 import { getInsertionSortAnimations } from "./insertionSort";
 import { getSelectionSortAnimations } from "./selectionSort";
@@ -12,6 +13,7 @@ interface AnimationFuncs {
   "Merge Sort": (array: number[]) => Animation[];
   "Quick Sort": (array: number[]) => Animation[];
   "Heap Sort": (array: number[]) => Animation[];
+  "Radix Sort": (array: number[]) => Animation[];
 }
 
 export const animationFuncs: AnimationFuncs = {
@@ -21,6 +23,7 @@ export const animationFuncs: AnimationFuncs = {
   "Merge Sort": getMergeSortAnimations,
   "Quick Sort": getQuickSortAnimations,
   "Heap Sort": getHeapSortAnimations,
+  "Radix Sort": getRadixSortAnimations,
 };
 
 export const executeAnimation = (
