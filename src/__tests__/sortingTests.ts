@@ -4,6 +4,7 @@ import {
   bubbleSort,
   insertionSort,
   selectionSort,
+  quickSort
 } from "../Algos/pureAlgos";
 import { getMergeSortData } from "./../Algos/mergeSort";
 
@@ -32,6 +33,11 @@ describe("Test sorting algorithms", () => {
 
   it("Pure Selection Sort Sorts an Array", () => {
     let sortedArray = selectionSort(array);
+    expect(sortedArray).toEqual(javaScriptSort);
+  });
+
+  it("Pure Quick Sort Sorts an Array", () => {
+    let sortedArray = quickSort(array);
     expect(sortedArray).toEqual(javaScriptSort);
   });
 
