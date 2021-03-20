@@ -76,6 +76,21 @@ export const AlgoInformation: React.FC<{ algo: string }> = ({ algo }) => {
           Worst case: O(n log(n))
         </Text>
       );
+    case "Heap Sort":
+      return (
+        <Text className="algoInfoContainer">
+          <b>Time complexity:</b>
+          <br />
+          Best case: O(n log(n))
+          <br />
+          Worst case: O(n log(n))<br />
+          Average: O(n log(n))<br />
+          <br />
+          <b>Space complexity:</b>
+          <br />
+          Worst case: O(1)
+        </Text>
+      );
     default:
       return <noscript />;
   }

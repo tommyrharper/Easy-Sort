@@ -3,6 +3,7 @@ import { getInsertionSortAnimations } from "./insertionSort";
 import { getSelectionSortAnimations } from "./selectionSort";
 import { getMergeSortAnimations } from "./mergeSort";
 import { getQuickSortAnimations } from "./quickSort";
+import { getHeapSortAnimations } from "./heapSort";
 import { Animation } from "../Helpers/Interfaces";
 interface AnimationFuncs {
   "Bubble Sort": (array: number[]) => Animation[];
@@ -10,6 +11,7 @@ interface AnimationFuncs {
   "Selection Sort": (array: number[]) => Animation[];
   "Merge Sort": (array: number[]) => Animation[];
   "Quick Sort": (array: number[]) => Animation[];
+  "Heap Sort": (array: number[]) => Animation[];
 }
 
 export const animationFuncs: AnimationFuncs = {
@@ -18,6 +20,7 @@ export const animationFuncs: AnimationFuncs = {
   "Selection Sort": getSelectionSortAnimations,
   "Merge Sort": getMergeSortAnimations,
   "Quick Sort": getQuickSortAnimations,
+  "Heap Sort": getHeapSortAnimations,
 };
 
 export const executeAnimation = (

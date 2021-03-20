@@ -1,7 +1,7 @@
 export const DEFAULT_ARR_LENGTH = 20;
 export const DEFAULT_DELAY = 30;
 
-export const MAX_DELAY = 2048;
+export const MAX_DELAY = 3500;
 export const MIN_SPEED = 1;
 export const MIN_DELAY = 0;
 

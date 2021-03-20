@@ -116,6 +116,7 @@ const Controls: React.FC<Props> = ({
         <option value="Selection Sort">Selection Sort</option>
         <option value="Merge Sort">Merge Sort</option>
         <option value="Quick Sort">Quick Sort</option>
+        <option value="Heap Sort">Heap Sort</option>
       </Select>
       <FormLabel>Select Speed:</FormLabel>
       <Slider

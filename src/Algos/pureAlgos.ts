@@ -149,7 +149,7 @@ export const heapSort = (array: number[]): number[] => {
   }
 
   // to heapify a subtree rooted with node i which is an index in array[]
-  function heapify(array, size, i) {
+  function heapify(array: number[], size: number, i: number) {
     let max = i; // initialize max as root
     let left = 2 * i + 1;
     let right = 2 * i + 2;
