@@ -1,3 +1,4 @@
+import { getCountSortAnimations } from './countSort';
 import { getRadixSortAnimations } from './radixSort';
 import { getBubbleSortAnimations } from "./bubbleSort";
 import { getInsertionSortAnimations } from "./insertionSort";
@@ -14,6 +15,7 @@ interface AnimationFuncs {
   "Quick Sort": (array: number[]) => Animation[];
   "Heap Sort": (array: number[]) => Animation[];
   "Radix Sort": (array: number[]) => Animation[];
+  "Count Sort": (array: number[]) => Animation[];
 }
 
 export const animationFuncs: AnimationFuncs = {
@@ -24,6 +26,7 @@ export const animationFuncs: AnimationFuncs = {
   "Quick Sort": getQuickSortAnimations,
   "Heap Sort": getHeapSortAnimations,
   "Radix Sort": getRadixSortAnimations,
+  "Count Sort": getCountSortAnimations,
 };
 
 export const executeAnimation = (

@@ -15,7 +15,9 @@ The aim of this program is to help developers learn sorting algorithms, through 
 - [x] Merge sort should highlight multiple bars at a time.
 - [x] Find type of handleChange.
   - [ ] Find type of handleChange arguments.
-- [ ] Make the barChart styling adjust dynamically as page size changes.
+- [x] Make the barChart styling adjust dynamically as page size changes.
+- [x] Add QuickSort.
+- [x] Add HeapSort.
 - [ ] As a user I be able try and sort the array myself by using drag and drop.
 - [ ] As a user, I should be told whether my manual approach to sorting the array is correct or incorrect.
 

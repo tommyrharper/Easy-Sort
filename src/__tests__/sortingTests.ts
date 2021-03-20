@@ -7,6 +7,7 @@ import {
   quickSort,
   heapSort,
   radixSort,
+  countSort,
 } from "../Algos/pureAlgos";
 import { getMergeSortData } from "../Algos/mergeSort";
 
@@ -50,6 +51,11 @@ describe("Test sorting algorithms", () => {
 
   it("Pure Radix Sort Sorts an Array", () => {
     let sortedArray = radixSort(array);
+    expect(sortedArray).toEqual(javaScriptSort);
+  });
+
+  it("Pure Count Sort Sorts an Array", () => {
+    let sortedArray = countSort(array);
     expect(sortedArray).toEqual(javaScriptSort);
   });
 

@@ -106,6 +106,21 @@ export const AlgoInformation: React.FC<{ algo: string }> = ({ algo }) => {
           Worst case: O(n + k)
         </Text>
       );
+    case "Count Sort":
+      return (
+        <Text className="algoInfoContainer">
+          <b>Time complexity:</b>
+          <br />
+          Best case: O(n + k)
+          <br />
+          Worst case: O(n + k)<br />
+          Average: O(n + k)<br />
+          <br />
+          <b>Space complexity:</b>
+          <br />
+          Worst case: O(k)
+        </Text>
+      );
     default:
       return <noscript />;
   }

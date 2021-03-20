@@ -178,7 +178,7 @@ export const heapSort = (array: number[]): number[] => {
 export const radixSort = (array: number[]) => {
   const arr = [...array];
 
-  const getNum = (num: number, index: number): number | string=> {
+  const getNum = (num: number, index: number): number | string => {
     const strNum = String(num);
     let end = strNum.length - 1;
     const foundNum = strNum[end - index];
@@ -216,4 +216,40 @@ export const radixSort = (array: number[]) => {
   };
 
   return radixSort(arr);
+};
+
+export const countSort = (array: number[]) => {
+  const arr = [...array];
+  const min = Math.min(...arr);
+  const max = Math.max(...arr);
+
+  const count: any = {};
+  // First populate the count object
+  for (let i = min; i <= max; i++) {
+    count[i] = 0;
+  }
+  for (let i = 0; i < arr.length; i++) {
+    count[arr[i]] += 1;
+  }
+  /* Now, count is indexed by numbers, with values corresponding to occurrences, eg:
+   * {
+   *   3: 1,
+   *   4: 0,
+   *   5: 2,
+   *   6: 1,
+   *   7: 0,
+   *   8: 0,
+   *   9: 1
+   * }
+   */
+
+  // Then, iterate over count's properties from min to max:
+  const sortedArr = [];
+  for (let i = min; i <= max; i++) {
+    while (count[i] > 0) {
+      sortedArr.push(i);
+      count[i]--;
+    }
+  }
+  return sortedArr;
 };
