@@ -6,12 +6,6 @@ export const getSelectionSortAnimations = (array: number[]): Animation[] => {
   for (let i = 0; i < arr.length - 1; i++) {
     let min = arr[i];
     let minIndex = i;
-    const animation: Animation = {
-      positions: [i, i + 1],
-      endValues: [arr[i], arr[i + 1]],
-      colors: ['red', 'red']
-    };
-    animations.push(animation);
     for (let j = i + 1; j < arr.length; j++) {
       if (arr[j] < min) {
         min = arr[j];
@@ -20,7 +14,7 @@ export const getSelectionSortAnimations = (array: number[]): Animation[] => {
       const animation: Animation = {
         positions: [i, j, minIndex],
         endValues: [arr[i], arr[j], arr[minIndex]],
-      colors: ['red', 'yellow', 'red']
+      colors: ['red', 'yellow', i === minIndex ? 'red' : 'blue']
       };
       animations.push(animation);
     }
