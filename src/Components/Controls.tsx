@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Select,
   FormLabel,
@@ -46,9 +46,27 @@ const Controls: React.FC<Props> = ({
   barStyle,
   color,
 }) => {
+  const [timeouts, setTimeouts] = useState<NodeJS.Timeout[]>([]);
   const { isSorting, algo, arrLength, delay, isSorted } = values;
   const { calcHeight } = barStyle;
   const speed = calcSpeed(delay);
+
+  const clearTimeouts = () => {
+    for (let i = 0; i < timeouts.length; i++) clearTimeout(timeouts[i]);
+    const arrayBars = document.getElementsByClassName(
+      "bar"
+    ) as HTMLCollectionOf<HTMLElement>;
+    for (let j = 0; j < arrayBars.length; j++)
+      arrayBars[j].style.backgroundColor = color;
+    setArray(generateArray(arrLength));
+    handleChange(
+      {
+        isSorting: false,
+        isSorted: true,
+      },
+      "passObject"
+    );
+  };
 
   return (
     <Box marginLeft="20px">
@@ -114,18 +132,29 @@ const Controls: React.FC<Props> = ({
         className="controlButtons"
         onClick={(e) => {
           handleChange(e, true);
-          executeAnimation(
-            array,
-            delay,
-            calcHeight,
-            setArray,
-            handleChange,
-            color,
-            algo
+          setTimeouts(
+            executeAnimation(
+              array,
+              delay,
+              calcHeight,
+              setArray,
+              handleChange,
+              color,
+              algo,
+              setTimeouts
+            )
           );
         }}
       >
         Sort
+      </Button>
+      <Button
+        isDisabled={!isSorting}
+        marginTop="20px"
+        className="controlButtons"
+        onClick={() => clearTimeouts()}
+      >
+        Stop
       </Button>
       <br />
       <Button
