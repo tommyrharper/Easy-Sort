@@ -22,7 +22,7 @@ export const executeAnimation = (
   delay: number,
   calcHeight: (h: number) => number,
   setArray: React.Dispatch<React.SetStateAction<number[]>>,
-  handleChange: any,
+  handleChange: (e: any, opt?: any) => void,
   teal: string,
   algorithm: string,
   setTimeouts: React.Dispatch<React.SetStateAction<NodeJS.Timeout[]>>

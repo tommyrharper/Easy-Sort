@@ -1,9 +1,10 @@
 import React from "react";
 import "./BarChart.scss";
 import { Box } from "@chakra-ui/react";
+import { BarStyle } from "../Helpers/Interfaces";
 interface Props {
   array: number[];
-  barStyle: any;
+  barStyle: BarStyle;
   color: string;
 }
 
@@ -35,7 +36,7 @@ const BarChart: React.FC<Props> = ({ array, barStyle, color }) => {
           </Box>
         );
       })}
-      </div>
+    </div>
   );
 };
 

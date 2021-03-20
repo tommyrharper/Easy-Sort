@@ -1,8 +1,5 @@
-import {
-  MAX_SPEED,
-  BASE,
-  logb,
-} from "./Config";
+import { MAX_SPEED, BASE, logb } from "./Config";
+import { BarStyle } from "./Interfaces";
 
 export const generateArray = (length: number): number[] => {
   if (length <= 1) return [1];
@@ -29,7 +26,7 @@ export const sleep = (milliseconds: number): void => {
 export const calcDelay = (s: number) => BASE ** (MAX_SPEED - s);
 export const calcSpeed = (d: number) => MAX_SPEED - logb(d);
 
-export const getBarChartStyling = (arrLength: number) => {
+export const getBarChartStyling = (arrLength: number): BarStyle => {
   const barChartWidth = 0.6 * window.innerWidth;
   const barChartHeight = 0.8 * window.innerHeight;
   const margin = 180 / ((arrLength - 1) * 2);
