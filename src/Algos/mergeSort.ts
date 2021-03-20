@@ -66,13 +66,13 @@ const merge = (leftObj: ArrObj, rightObj: ArrObj): ArrObj => {
   while (left.length && right.length) {
     let leftNum = left[0];
     let rightNum = right[0];
-    if (leftNum < rightNum) {
+    if (leftNum <= rightNum) {
       const leftNumber = left.shift();
       if (typeof leftNumber === "number") arr.push(leftNumber);
       const pos = leftIndexes[0] + leftIndex + rightIndex;
       animations.push({
-        positions: [pos, pos],
-        endValues: [leftNum, leftNum],
+        positions: [pos, rightIndexes[0] + rightIndex],
+        endValues: [leftNum, rightNum],
       });
       leftIndex++;
     } else {
@@ -80,7 +80,7 @@ const merge = (leftObj: ArrObj, rightObj: ArrObj): ArrObj => {
       if (typeof rightNumber === "number") arr.push(rightNumber);
       const pos = leftIndexes[0] + leftIndex + rightIndex;
       animations.push({
-        positions: [pos, pos],
+        positions: [pos, rightIndexes[0] + rightIndex],
         endValues: [rightNum, rightNum],
       });
       rightIndex++;
