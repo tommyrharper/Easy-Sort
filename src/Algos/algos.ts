@@ -24,8 +24,10 @@ export const executeAnimation = (
   setArray: React.Dispatch<React.SetStateAction<number[]>>,
   handleChange: any,
   teal: string,
-  algorithm: string
-) => {
+  algorithm: string,
+  setTimeouts: React.Dispatch<React.SetStateAction<NodeJS.Timeout[]>>
+): NodeJS.Timeout[] => {
+  const timeouts = [];
   const animations = (animationFuncs as any)[algorithm](array);
   const arrayBars = document.getElementsByClassName(
     "bar"
@@ -37,7 +39,7 @@ export const executeAnimation = (
     const pos3 = positions[2];
     const height1 = `${calcHeight(endValues[0])}px`;
     const height2 = `${calcHeight(endValues[1])}px`;
-    setTimeout(() => {
+    timeouts.push(setTimeout(() => {
       for (let j = 0; j < arrayBars.length; j++) {
         if (j !== pos1 && j !== pos2) {
           arrayBars[j].style.backgroundColor = teal;
@@ -46,19 +48,20 @@ export const executeAnimation = (
       arrayBars[pos1].style.backgroundColor = "red";
       arrayBars[pos2].style.backgroundColor = "red";
       if (pos3) arrayBars[pos3].style.backgroundColor = "red";
-      setTimeout(() => {
+      timeouts.push(setTimeout(() => {
         arrayBars[pos1].style.height = height1;
         arrayBars[pos2].style.height = height2;
         arrayBars[pos1].innerHTML = `${endValues[0]}`;
         arrayBars[pos2].innerHTML = `${endValues[1]}`;
-      }, Math.floor(delay / 3));
+      }, Math.floor(delay / 3)));
       if (i === animations.length - 1) {
         // clear all bars
-        setTimeout(() => {
+        timeouts.push(setTimeout(() => {
           for (let j = 0; j < arrayBars.length; j++) {
             arrayBars[j].style.backgroundColor = teal;
           }
           setArray(array.sort((a, b) => a - b));
+          setTimeouts([]);
           handleChange(
             {
               isSorting: false,
@@ -66,8 +69,9 @@ export const executeAnimation = (
             },
             "passObject"
           );
-        }, delay);
+        }, delay));
       }
-    }, i * delay);
+    }, i * delay));
   }
+  return timeouts;
 };
